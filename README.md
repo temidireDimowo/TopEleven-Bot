@@ -1,8 +1,9 @@
 # TopElevenBot
 
 ## Disclaimer
-> <span style="color:red">This project is for educational purposes only. Use at your own risk.  
-> Automating games may violate their terms of service.</span>
+```diff
+- This project is for educational purposes only. Use at your own risk. Automating games may violate their terms of service.
+```
 
 ## Overview
 
