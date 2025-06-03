@@ -14,10 +14,11 @@ An automation bot for [Top Eleven](https://topeleven.com/). Currently helps achi
     <p>28 days =  700 greens<p>
 
 ## Setup Guide
-Step1: Donwload the Bluestacks app from the [official website](https://www.bluestacks.com/) 
-Step2: Donwload the TopEleven app in BlueStacks
-Step3: git clone [https://github.com/temidireDimowo/TopElevenBot](https://github.com/temidireDimowo/TopElevenBot)
-Step4: install the project requirements
+Step 1: Donwload the Bluestacks app from the [official website](https://www.bluestacks.com/) <br>
+Step 2: Donwload the TopEleven app in BlueStacks <br>
+Step 3: git clone [https://github.com/temidireDimowo/TopElevenBot](https://github.com/temidireDimowo/TopElevenBot) <br>
+Step 4: pip install requirements.txt
+Step 5: py main.py
 
 ## Future Works
 - Auto watch Top Eleven matches according to schedule on excel file
