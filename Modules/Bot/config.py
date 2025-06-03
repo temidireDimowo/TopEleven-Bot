@@ -20,11 +20,14 @@ class ClickType(Enum):
 class BotConfig:
     """Configuration class for bot settings."""
     delay: float = 0.1
-    confidence: float = 0.65
+    confidence: float = 0.8
     move_duration: float = 0.2
-    images_dir: str = "images"
+    images_dir: str = "Assets"
     log_dir: str = "logs"
     target_image: str = "ProductLogo.png"
+    top_eleven_dir: str = "TopEleven"
+    close_dir: str = "Assets/TopEleven/Ads/close"
+    skip_dir: str = "Assets/TopEleven/Ads/skip"
     
     @classmethod
     def from_json(cls, config_path: str = "config.json") -> "BotConfig":
@@ -50,11 +53,14 @@ class BotConfig:
             # Create instance with loaded data, falling back to defaults for missing keys
             return cls(
                 delay=config_data.get('delay', 0.1),
-                confidence=config_data.get('confidence', 0.65),
+                confidence=config_data.get('confidence', 0.8),
                 move_duration=config_data.get('move_duration', 0.2),
-                images_dir=config_data.get('images_dir', 'images'),
+                images_dir=config_data.get('images_dir', 'Assets'),
                 log_dir=config_data.get('log_dir', 'logs'),
-                target_image=config_data.get('target_image', 'ProductLogo.png')
+                target_image=config_data.get('target_image', 'ProductLogo.png'),
+                top_eleven_dir=config_data.get('top_eleven_dir', 'Assets/TopEleven'),
+                close_dir=config_data.get('close_dir', 'Assets/TopEleven/Ads/close'),
+                skip_dir=config_data.get('skip_dir', 'Assets/TopEleven/Ads/skip')
             )
             
         except json.JSONDecodeError as e:
@@ -132,10 +138,25 @@ class BotConfig:
         if not self.target_image.strip():
             issues.append("target_image cannot be empty")
         
-        # Check if images directory exists
-        images_path = Path(self.images_dir)
-        if not images_path.exists():
-            issues.append(f"images_dir '{self.images_dir}' does not exist")
+        if not self.top_eleven_dir.strip():
+            issues.append("top_eleven_dir cannot be empty")
+            
+        if not self.close_dir.strip():
+            issues.append("close_dir cannot be empty")
+            
+        if not self.skip_dir.strip():
+            issues.append("skip_dir cannot be empty")
+        
+        # Check if directories exist
+        for dir_attr, dir_name in [
+            ('images_dir', 'images_dir'),
+            ('top_eleven_dir', 'top_eleven_dir'),
+            ('close_dir', 'close_dir'),
+            ('skip_dir', 'skip_dir')
+        ]:
+            dir_path = Path(getattr(self, dir_attr))
+            if not dir_path.exists():
+                issues.append(f"{dir_name} '{getattr(self, dir_attr)}' does not exist")
         
         # Log issues
         for issue in issues:
@@ -152,5 +173,8 @@ class BotConfig:
             f"move_duration={self.move_duration}, "
             f"images_dir='{self.images_dir}', "
             f"log_dir='{self.log_dir}', "
-            f"target_image='{self.target_image}')"
+            f"target_image='{self.target_image}', "
+            f"top_eleven_dir='{self.top_eleven_dir}', "
+            f"close_dir='{self.close_dir}', "
+            f"skip_dir='{self.skip_dir}')"
         )

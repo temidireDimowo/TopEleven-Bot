@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Optional
 
 from .config import BotConfig
+import pyautogui
 
 
 class BotLogger:
@@ -75,3 +76,4 @@ class BotLogger:
         if self.logger is None:
             return self.setup_logging()
         return self.logger
+    

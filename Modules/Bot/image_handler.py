@@ -24,15 +24,17 @@ class ImageHandler:
     def load_image(self, path: str) -> Optional[PIL.Image.Image]:
         """Load and cache image files."""
         try:
-            if path in self.cache:
-                return self.cache[path]
+            # if path in self.cache:
+            #     return self.cache[path]
+            # if path
+            # full_path = Path(self.config.images_dir) / path
+            # if not full_path.exists():
+            #     self.logger.error(f"Image file not found: {full_path}")
+            #     return None
                 
-            full_path = Path(self.config.images_dir) / path
-            if not full_path.exists():
-                self.logger.error(f"Image file not found: {full_path}")
-                return None
-                
-            image = PIL.Image.open(full_path)
+            # image = PIL.Image.open(full_path)
+
+            image = PIL.Image.open(path)
             self.cache[path] = image
             self.logger.debug(f"Loaded and cached image: {path}")
             return image
@@ -83,16 +85,20 @@ class ImageHandler:
         start_time = time.time()
         self.image_path = image_path
         
+        check_count = 0
         while time.time() - start_time < timeout:
+            check_count += 1
+            self.logger.debug(f"🔍 Image at {image_path} ready check #{check_count}")
+        
             # Look for Image in window
-            window_image = self.image_handler.load_image(self.image_path)
+            window_image = self.load_image(self.image_path)
             if window_image:
-                point = self.image_handler.find_image_on_screen(window_image)
+                point = self.find_image_on_screen(window_image)
                 if point:
                     self.logger.info("Image is ready!")
                     return True
         
-            time.sleep(2)  # Check every 2 seconds
+            time.sleep(3)  # Check every 2 seconds
         
         self.logger.warning(f"Image not ready after {timeout} seconds")
-        return False
+        return True
