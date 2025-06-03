@@ -17,7 +17,7 @@ An automation bot for [Top Eleven](https://topeleven.com/). Currently helps achi
 Step 1: Donwload the Bluestacks app from the [official website](https://www.bluestacks.com/) <br>
 Step 2: Donwload the TopEleven app in BlueStacks <br>
 Step 3: git clone [https://github.com/temidireDimowo/TopElevenBot](https://github.com/temidireDimowo/TopElevenBot) <br>
-Step 4: pip install requirements.txt
+Step 4: pip install requirements.txt <br>
 Step 5: py main.py
 
 ## Future Works
