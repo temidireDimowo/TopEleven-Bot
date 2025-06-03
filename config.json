@@ -1,10 +1,11 @@
 {   "delay":0.1,
-    "confidence":0.75,
+    "confidence":0.8,
     "move_duration":0.2,
     "images_dir":"Assets",  
+ 
+    "log_dir":"logs",
+    "target_image":"ProductLogo.png",
     "top_eleven_dir":"Assets/TopEleven",  
     "close_dir":"Assets/TopEleven/Ads/close",  
-    "skip_dir":"Assets/TopEleven/Ads/skip",  
-    "log_dir":"logs",
-    "target_image":"ProductLogo.png"
+    "skip_dir":"Assets/TopEleven/Ads/skip"
 }
