@@ -2,7 +2,6 @@
     "confidence":0.8,
     "move_duration":0.2,
     "images_dir":"Assets",  
- 
     "log_dir":"logs",
     "target_image":"ProductLogo.png",
     "top_eleven_dir":"Assets/TopEleven",  
