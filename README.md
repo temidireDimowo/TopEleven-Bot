@@ -31,3 +31,4 @@ Step 5: py main.py
 
 ## References
 1. [Monopoly Got Bot](https://github.com/lewisgibson/monopoly-go-bot) This was very helpful. A solid foundation for building a bot on BlueStacks.
+2. [Clash Royale Bot](https://github.com/Pbatch/ClashRoyaleBuildABot) Another impeccable project
