@@ -1,5 +1,5 @@
 """
-Resource farming automation module.
+Resource farming automation module with YOLO11 support.
 Handles automated collection of resources, rewards, and repetitive tasks.
 """
 
@@ -9,115 +9,102 @@ from typing import List, Dict, Optional
 from pathlib import Path
 import datetime
 from Modules.Bot.config import BotConfig, ClickType
-from Modules.Bot.image_handler import ImageHandler
+from Modules.Bot.yolo_image_handler import YOLOImageHandler
 from Modules.Bot.input_handler import InputHandler
 import pyautogui
+import os
 
 
 class ResourceFarmer:
-    """Handles automated resource farming tasks."""
+    """Handles automated resource farming tasks using YOLO11 detection."""
     
-    def __init__(self, config: BotConfig, logger: logging.Logger):
+    def __init__(self, config: BotConfig, logger: logging.Logger, model_path: str = None):
         self.config = config
         self.logger = logger
-        self.image_handler = ImageHandler(config, logger)
         self.input_handler = InputHandler(config, logger)
         self.farming_active = False
         
-        # Resource farming patterns will use directory structure from config
-        self.resource_patterns = {
-            'skip_popup': ['skip*.png', 'skip_ad*.png'],
-            'close_popup': ['close*.png', 'x_button*.png', 'dismiss*.png'],
-            'collect_rewards': ['collect*.png', 'claim*.png', 'reward*.png'],
-            'daily_bonus': ['daily*.png', 'bonus*.png'],
-            'rest_icon': ['rest_icon*.png', 'rest_button*.png']
-        }
+        # Initialize YOLO handler if model path is provided
+        if model_path and Path(model_path).exists():
+            self.yolo_handler = YOLOImageHandler(config, logger, model_path)
+            self.use_yolo = False
+            self.logger.info("✅ YOLO11 detection enabled")
+        else:
+            self.yolo_handler = None
+            self.use_yolo = False
+            self.logger.warning("⚠️ YOLO model not available, falling back to traditional detection")
+            # Fallback to original image handler
+            from Modules.Bot.image_handler import ImageHandler
+            self.image_handler = ImageHandler(config, logger)
 
-    def take_screenshot(name: str = "Screenshot"+str(datetime.datetime.now())):
-        screenshot = pyautogui.screenshot(name)
-        screenshot.save(self.config.log_dir)
+    def take_screenshot(self, name: str = None):
+        """Take a screenshot for debugging."""
+        if name is None:
+            name = f"Screenshot_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        
+        if self.use_yolo:
+            # Save annotated screenshot with YOLO detections
+            return self.yolo_handler.save_annotated_screenshot(f"{name}.png")
+        else:
+            # Regular screenshot
+            screenshot = pyautogui.screenshot()
+            save_path = Path(self.config.screenshot_dir) / f"{name}.png"
+            screenshot.save(save_path)
+            return str(save_path)
 
     def start_farming(self) -> bool:
         """
-        Start the resource farming process with specific sequence:
-        1. Click on rest_icon_dark_background.png
-        2. Wait for watch_ads_green.png to appear and click it
+        Start the resource farming process with YOLO11 detection:
+        1. Look for rest_icon using YOLO
+        2. Wait for watch_ads button to appear and click it
         3. Sleep for 61 seconds
-        4. Try to skip ads using skip directory
-        5. If no skip images found, try close directory
-        
-        STOPS immediately if rest icon image file is not found.
+        4. Try to skip ads using YOLO detection
+        5. If no skip found, try close ads
         """
         self.farming_active = True
-        self.logger.info("🌾 Starting resource farming sequence...")
-        
-        # Step 1: Check if rest icon file exists first
-        rest_icon_path = str(Path(self.config.top_eleven_dir) / "rest_icon_dark_background.png")
-        
-        # Check if the file exists before trying to load it
-        if not Path(rest_icon_path).exists():
-            self.logger.error(f"❌ Rest icon image file not found: {rest_icon_path}")
-            self.logger.error("🛑 Stopping farming sequence - required image file missing")
-            self.farming_active = False
-            return False
-        
-        # self.logger.error(f"This is the path for the rest icon {rest_icon_path}")
+        self.logger.info("🌾 Starting YOLO-enhanced resource farming sequence...")
 
-        # Try to load the rest icon image
-        rest_icon_image = self.image_handler.load_image(rest_icon_path)
+       
+        # Step 1: Look for rest icon using YOLO
+        self.logger.info("🔍 Step 1: Looking for rest icon using YOLO...")
         
-        if rest_icon_image is None:
-            self.logger.error(f"❌ Failed to load rest icon image: {rest_icon_path}")
-            self.logger.error("🛑 Stopping farming sequence - could not load required image")
-            self.farming_active = False
-            return False
+        rest_point = self.yolo_handler.find_class_on_screen('rest_pack', confidence_threshold=0.1)
         
-        # Try to find the rest icon on screen
-        point = self.image_handler.find_image_on_screen(rest_icon_image)
-        if point is None:
-            self.logger.warning("⚠️ Rest icon not found on screen - may not be visible yet")
+        if rest_point is None:
+            self.logger.warning("⚠️ 4" \
+            "" \
+            " with YOLO - taking debug screenshot")
+            rest_icon_not_found_count = len([x for x in os.listdir("logs") if (x.startswith("rest_icon_not_found"))])
+            self.take_screenshot("rest_icon_not_found"+f"_{rest_icon_not_found_count}")
             self.logger.warning("🛑 Stopping farming sequence - rest icon not available")
             self.farming_active = False
             return False
             
         self.logger.info("✅ Step 1: Found and clicking rest icon")
-        if not self.input_handler.click_at_point(point):
+        if not self.input_handler.click_at_point(rest_point):
             self.logger.error("❌ Failed to click rest icon")
-            self.logger.error("🛑 Stopping farming sequence - click failed")
             self.farming_active = False
             return False
         
-        self.logger.info("⏳ Step 1.5: Sleep for 5 seconds waiting for watch ads button to appear...")
-        time.sleep(5)
-
-        # Step 2: Wait for watch ads button to appear and click it
-        watch_ads_path = str(Path(self.config.top_eleven_dir) / "watch_ads_green_windowed.png")
+        # Step 2: Wait for watch ads button using YOLO
         self.logger.info("⏳ Step 2: Waiting for watch ads button to appear...")
+        time.sleep(5)  # Brief wait for interface to update
         
-        if not self.image_handler.wait_for_image(watch_ads_path, timeout=30):
-            self.logger.error("❌ Watch ads button did not appear within 30 seconds")
-            self.logger.error("🛑 Stopping farming sequence - watch ads button timeout")
-            self.farming_active = False
-            return False
-            
-        watch_ads_image = self.image_handler.load_image(watch_ads_path)
-        if watch_ads_image is None:
-            self.logger.error(f"❌ Watch ads image not found: {watch_ads_path}")
-            self.logger.error("🛑 Stopping farming sequence - watch ads image missing")
-            self.farming_active = False
-            return False
-            
-        point = self.image_handler.find_image_on_screen(watch_ads_image)
-        if point is None:
-            self.logger.warning("⚠️ Watch ads button not found on screen")
-            self.logger.warning("🛑 Stopping farming sequence - watch ads button not visible")
-            self.farming_active = False
-            return False
-            
-        self.logger.info("✅ Step 2: Found and clicking watch ads button")
-        if not self.input_handler.click_at_point(point):
-            self.logger.error("❌ Failed to click watch ads button")
-            self.logger.error("🛑 Stopping farming sequence - watch ads click failed")
+        # Watch ads variable
+        watch_ads_found = False
+        
+
+        ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.1)
+        if ads_point:
+            self.logger.info(f"✅ Step 2: Found watch ads button using class: {"watch_ads_general"}")
+            if self.input_handler.click_at_point(ads_point):
+                watch_ads_found = True
+            time.sleep(3)
+        
+        if not watch_ads_found:
+            self.logger.error("❌ Watch ads button not found with YOLO")
+            watch_ads_not_found_count = len([x for x in os.listdir("logs") if (x.startswith("watch_ads_not_found"))])
+            self.take_screenshot("watch_ads_not_found"+f"_{watch_ads_not_found_count}")
             self.farming_active = False
             return False
             
@@ -125,208 +112,153 @@ class ResourceFarmer:
         self.logger.info("😴 Step 3: Sleeping for 61 seconds...")
         time.sleep(61)
         
-        # Step 4: Try to skip ads using skip directory
-        self.logger.info("🔄 Step 4: Attempting to skip ads...")
-        skip_found = self._iterate_through_directory_images(self.config.skip_dir, "skip")
+        # Step 4: Try to skip ads using YOLO
+        self.logger.info("🔄 Step 4: Attempting to skip ads using YOLO...")
+        skip_found = self._handle_ads_with_yolo(['skip_ad'])
         
-        # Step 5: If no skip images found, try close directory
+        # Step 5: If no skip found, try close ads
         if not skip_found:
             self.logger.info("🔄 Step 5: No skip ads found, trying close ads...")
-            close_found = self._iterate_through_directory_images(self.config.close_dir, "close")
+            close_found = self._handle_ads_with_yolo(['close_ad'])
             
-            if(close_found):
-                self.logger.info("🔄 Step 6: Sleeping for 65s Closed one add, checking if there are two ads...")
-                time.sleep(65)
-                close_found = self._iterate_through_directory_images(self.config.close_dir, "close")
+            if close_found:
+                #  Check if there is a watch_ads_general image, else wait for the second ad close button
+                ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
+                if ads_point:
+                    self.logger.info(f"✅ Step 2: Found watch ads button using class: {"watch_ads_general"}")
+                    if self.input_handler.click_at_point(ads_point):
+                        watch_ads_found = True
+                    time.sleep(3)
+                else:
+                    self.logger.info("🔄 Step 6: Sleeping for 65s - checking for second ad...")
+                    time.sleep(65)
+                    self._handle_ads_with_yolo(['close_ad'])
             else:
-                self.logger.warning("⚠️ No skip or close ads found")
+                self.logger.warning("⚠️ No ads found to close")
         else:
-            self.logger.info("🔄 Step 5: Skip ads found, trying close ads after 65 seconds...")
+            self.logger.info("🔄 Step 5: Skip ads found, checking for close ads after 65 seconds...")
             time.sleep(65)
-            close_found = self._iterate_through_directory_images(self.config.close_dir, "close")
-
+            self._handle_ads_with_yolo(['close_ad'])
         
-        self.logger.info("✅ Farming sequence completed successfully")
+        self.logger.info("✅ YOLO-enhanced farming sequence completed successfully")
         return True
-        
-    def _iterate_through_directory_images(self, directory: str, action_type: str) -> bool:
+    
+    def farm_rest_player(self) -> bool:
         """
-        Iterate through all images in a directory and try to click them.
+        Start the resource farming process with YOLO11 detection:
+        1. Look for general_watch_ads button to appear and click it
+        2. Sleep for 61 seconds
+        3. Try to skip ads using YOLO detection
+        4. If no skip found, try close ads
+        """
+        self.farming_active = True
+        self.logger.info("🌾 Starting farm rest player...")
+
+        # Step 2: Wait for watch ads button using YOLO
+        self.logger.info("⏳ Step 1: Waiting for watch ads button to appear...")
+        time.sleep(5)  # Brief wait for interface to update
+        
+        # Watch ads variable
+        watch_ads_found = False
+        
+
+        ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.1)
+        if ads_point:
+            self.logger.info(f"✅ Step 2: Found watch ads button using class: {"watch_ads_general"}")
+            if self.input_handler.click_at_point(ads_point):
+                watch_ads_found = True
+            time.sleep(3)
+        
+        if not watch_ads_found:
+            self.logger.error("❌ Watch ads button not found with YOLO")
+            watch_ads_not_found_count = len([x for x in os.listdir("logs") if (x.startswith("watch_ads_not_found"))])
+            self.take_screenshot("watch_ads_not_found"+f"_{watch_ads_not_found_count}")
+            self.farming_active = False
+            return False
+            
+        # Step 3: Sleep for 61 seconds
+        self.logger.info("😴 Step 3: Sleeping for 61 seconds...")
+        time.sleep(61)
+        
+        # Step 4: Try to skip ads using YOLO
+        self.logger.info("🔄 Step 4: Attempting to skip ads using YOLO...")
+        skip_found = self._handle_ads_with_yolo(['skip_ad'])
+        
+        # Step 5: If no skip found, try close ads
+        if not skip_found:
+            self.logger.info("🔄 Step 5: No skip ads found, trying close ads...")
+            close_found = self._handle_ads_with_yolo(['close_ad'])
+            
+            if close_found:
+                #  Check if there is a watch_ads_general image, else wait for the second ad close button
+                ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
+                if ads_point:
+                    self.logger.info(f"✅ Step 2: Found watch ads button using class: {"watch_ads_general"}")
+                    if self.input_handler.click_at_point(ads_point):
+                        watch_ads_found = True
+                    time.sleep(3)
+                else:
+                    self.logger.info("🔄 Step 6: Sleeping for 65s - checking for second ad...")
+                    time.sleep(65)
+                    self._handle_ads_with_yolo(['close_ad'])
+            else:
+                self.logger.warning("⚠️ No ads found to close")
+        else:
+            self.logger.info("🔄 Step 5: Skip ads found, checking for close ads after 65 seconds...")
+            time.sleep(65)
+            self._handle_ads_with_yolo(['close_ad'])
+        
+        self.logger.info("✅ YOLO-enhanced farming sequence completed successfully")
+        return True
+   
+    def _handle_ads_with_yolo(self, class_names: List[str]) -> bool:
+        """
+        Handle ads using YOLO detection for specified class names.
         
         Args:
-            directory: Directory path to search for images
-            action_type: Type of action for logging ("skip" or "close")
+            class_names: List of class names to look for
             
         Returns:
-            True if any image was found and clicked, False otherwise
+            True if any ad was found and clicked, False otherwise
         """
-        if not directory:
-            self.logger.warning(f"{action_type.title()} directory not configured")
-            return False
+        try:
+            # Find all objects of specified classes
+            detected_objects = self.yolo_handler.find_objects_on_screen(
+                target_classes=class_names, 
+                confidence_threshold=0.1
+            )
             
-        directory_path = Path(directory)
-        if not directory_path.exists():
-            self.logger.warning(f"{action_type.title()} directory does not exist: {directory}")
-            return False
-        
-        # Get all image files in the directory
-        image_extensions = ['*.png', '*.jpg', '*.jpeg', '*.bmp', '*.gif']
-        image_files = []
-        
-        for extension in image_extensions:
-            image_files.extend(directory_path.glob(extension))
-        
-        if not image_files:
-            self.logger.info(f"No image files found in {action_type} directory: {directory}")
-            return False
-        
-        self.logger.info(f"Found {len(image_files)} images in {action_type} directory image files in a an array {image_files}")
-        
-        # Try each image file
-        for image_file in sorted(image_files):
-            try:
-                # Load image using relative path from images_dir
-                try:
-                    # relative_path = image_file.relative_to("Assets" / Path(self.config.images_dir))
-                    # image = self.image_handler.load_image(str(relative_path))
-                    image = self.image_handler.load_image(str(image_file))
-
-                except Exception as e:
-                    # If not relative to images_dir, use absolute path
-                    image = self.image_handler.load_image(str(image_file))
-                    self.logger.error(f"Error loading image out of images in dir using relative path{e}")
-
-                if image is None:
-                    self.logger.debug(f"Could not load image: {image_file.name}")
-                    continue
+            if not detected_objects:
+                self.logger.info(f"❌ No objects found for classes: {class_names}")
+                return False
+            
+            # Click on the best match (highest confidence)
+            best_match = max(detected_objects, key=lambda obj: obj['confidence'])
+            
+            self.logger.info(
+                f"✅ Found {best_match['class_name']} with confidence {best_match['confidence']:.2f}"
+            )
+            
+            if self.input_handler.click_at_point(best_match['center_point']):
+                self.logger.info(f"✅ Successfully clicked {best_match['class_name']}")
+                time.sleep(1)  # Brief pause after clicking
+                return True
+            else:
+                self.logger.warning(f"❌ Failed to click {best_match['class_name']}")
+                return False
                 
-                # Try to find the image on screen
-                point = self.image_handler.find_image_on_screen(image)
-                if point is not None:
-                    self.logger.info(f"✅ Found {action_type} button: {image_file.name}")
-                    if self.input_handler.click_at_point(point):
-                        self.logger.info(f"✅ Successfully clicked {action_type} button")
-                        time.sleep(1)  # Brief pause after clicking
-                        return True
-                    else:
-                        self.logger.warning(f"Failed to click {action_type} button: {image_file.name}")
-                else:
-                    self.logger.debug(f"Image not found on screen: {image_file.name}")
-                    
-            except Exception as e:
-                self.logger.error(f"Error processing {action_type} image {image_file.name}: {e}")
-                continue
-        
-        self.logger.info(f"No {action_type} buttons found on screen")
-        return False
+        except Exception as e:
+            self.logger.error(f"❌ Error in YOLO ad handling: {e}")
+            return False
 
     def stop_farming(self) -> None:
         """Stop the resource farming process."""
         self.farming_active = False
         self.logger.info("🛑 Stopping resource farming...")
         
-    def find_and_click_pattern(self, pattern_name: str, search_directory: str = None) -> bool:
-        """
-        Find and click images matching a specific pattern.
-        
-        Args:
-            pattern_name: Name of the pattern from resource_patterns
-            search_directory: Specific directory to search in (optional)
-            
-        Returns:
-            True if found and clicked, False otherwise
-        """
-        if pattern_name not in self.resource_patterns:
-            self.logger.warning(f"Unknown pattern: {pattern_name}")
-            return False
-            
-        patterns = self.resource_patterns[pattern_name]
-        
-        # Use specific directory or default to images_dir
-        if search_directory:
-            search_dir = Path(search_directory)
-        else:
-            search_dir = Path(self.config.images_dir)
-        
-        for pattern in patterns:
-            matching_files = list(search_dir.glob(pattern))
-            for image_file in sorted(matching_files):
-                # Get relative path from images_dir for image_handler
-                try:
-                    relative_path = image_file.relative_to(Path(self.config.images_dir))
-                    image = self.image_handler.load_image(str(relative_path))
-                except ValueError:
-                    # If not relative to images_dir, use full path
-                    image = self.image_handler.load_image(str(image_file))
-                    
-                if image is None:
-                    continue
-                    
-                point = self.image_handler.find_image_on_screen(image)
-                if point is not None:
-                    self.logger.info(f"🎯 Found {pattern_name}: {image_file.name}")
-                    return self.input_handler.click_at_point(point)
-                    
-        return False
-        
-    def skip_and_close_ads(self) -> bool:
-        """
-        Skip and close ads using patterns from config directories.
-        
-        Returns:
-            True if any ad was closed, False otherwise
-        """
-        ads_handled = False
-        
-        # Try to skip ads using skip_dir from config
-        if self.find_and_click_pattern('skip_popup', self.config.skip_dir):
-            self.logger.info("✅ Skipped ad")
-            ads_handled = True
-            time.sleep(1)  # Brief pause after skipping
-            
-        # Try to close ads using close_dir from config
-        if self.find_and_click_pattern('close_popup', self.config.close_dir):
-            self.logger.info("✅ Closed ad")
-            ads_handled = True
-            time.sleep(1)  # Brief pause after closing
-
-        # Try to close ads using close_dir from config
-        if self.find_and_click_pattern('close_popup', self.config.close_dir):
-            self.logger.info("✅ Closed ad")
-            ads_handled = True
-            time.sleep(1)  # Brief pause after closing
-            
-        return ads_handled
-        
-    # def collect_daily_rewards(self) -> bool:
-    #     """
-    #     Collect daily login rewards and bonuses.
-        
-    #     Returns:
-    #         True if rewards were collected, False otherwise
-    #     """
-    #     self.logger.info("🎁 Attempting to collect daily rewards...")
-        
-    #     rewards_collected = False
-        
-    #     # Look for daily bonus in top eleven directory
-    #     if self.find_and_click_pattern('daily_bonus', self.config.top_eleven_dir):
-    #         self.logger.info("✅ Collected daily bonus")
-    #         rewards_collected = True
-    #         time.sleep(2)  # Wait for reward dialog
-            
-    #     # Look for general collect rewards
-    #     if self.find_and_click_pattern('collect_rewards', self.config.top_eleven_dir):
-    #         self.logger.info("✅ Collected rewards")
-    #         rewards_collected = True
-    #         time.sleep(2)  # Wait for reward dialog
-            
-    #     return rewards_collected
-        
     def run_farming_cycle(self) -> Dict[str, bool]:
         """
-        Run a complete farming cycle.
-        Only proceeds if the rest icon image file exists and is found.
+        Run a complete farming cycle with YOLO11 detection.
         
         Returns:
             Dictionary with cycle results
@@ -339,16 +271,17 @@ class ResourceFarmer:
             'rewards_collected': False,
             'rest_clicked': False,
             'cycle_time': time.time(),
-            'sequence_completed': False
+            'sequence_completed': False,
+            'yolo_enabled': self.use_yolo
         }
         
-        self.logger.info("🔄 Running farming cycle...")
+        self.logger.info("🔄 Running YOLO-enhanced farming cycle...")
         
-        # Handle ads first
-        results['ads_handled'] = self.skip_and_close_ads()
-        
-        # Collect any available rewards
-        # results['rewards_collected'] = self.collect_daily_rewards()
+        # Handle any visible ads first
+        if self.use_yolo:
+            results['ads_handled'] = self._handle_ads_with_yolo([
+                'close_ad', 'close', 'skip_ad', 'skip', 'x_button'
+            ])
         
         # Try to run the main farming sequence
         rest_success = self.start_farming()
@@ -356,44 +289,54 @@ class ResourceFarmer:
         results['sequence_completed'] = rest_success
         
         if rest_success:
-            self.logger.info("✅ Farming sequence completed successfully")
+            self.logger.info("✅ YOLO-enhanced farming sequence completed successfully")
         else:
-            self.logger.warning("⚠️ Farming sequence failed - rest icon not available")
-            self.logger.info("🔄 Will retry in next cycle...")
+            self.logger.warning("⚠️ Farming sequence failed - will retry in next cycle")
             
         return results
         
     def continuous_farming(self, cycle_interval: int = 10) -> None:
         """
-        Run continuous farming with specified interval.
+        Run continuous farming with YOLO11 detection.
         
         Args:
             cycle_interval: Seconds between farming cycles
         """
-        self.logger.info(f"🔁 Starting continuous farming (interval: {cycle_interval}s)")
+        self.logger.info(f"🔁 Starting YOLO-enhanced continuous farming (interval: {cycle_interval}s)")
         
-        # Variable for top eleven greens
-        green_count = 25
-        while self.farming_active and green_count>0:
+        green_count = 0
+        max_greens = 25
+        
+        while self.farming_active and green_count < max_greens:
             try:
                 results = self.run_farming_cycle()
                 
                 if results:
                     self.logger.info(f"📊 Farming cycle results: {results}")
-                    green_count += 1
-                    
-                    # If sequence didn't complete due to missing rest icon, 
-                    # still continue but log the issue
-                    if not results.get('sequence_completed', False):
-                        self.logger.info("⏰ Rest icon not available this cycle, will try again next time")
+                    if results.get('sequence_completed', False):
+                        green_count += 1
+                        self.logger.info(f"🌱 Greens collected: {green_count}/{max_greens}")
                 
                 if self.farming_active:  # Check again before sleeping
-                    self.logger.info(f"⏰ Waiting {cycle_interval}s until next cycle..., green count is {green_count}")
+                    self.logger.info(f"⏰ Waiting {cycle_interval}s until next cycle...")
                     time.sleep(cycle_interval)
                     
             except Exception as e:
-                self.logger.error(f"Error in farming cycle taking screenshot for further debugging: {e}")
-                self.take_screenshot("Error in farming ")
+                self.logger.error(f"❌ Error in farming cycle: {e}")
+                farming_error_count = len([x for x in os.listdir("logs") if (x.startswith("farming_error"))])
+                self.take_screenshot("farming_error"+f"_{farming_error_count+1}")
                 
-        self.logger.info("🏁 Continuous farming stopped")
+        self.logger.info(f"🏁 YOLO-enhanced continuous farming stopped. Total greens: {green_count}")
 
+    def get_detection_info(self) -> Dict:
+        """Get information about the current detection method."""
+        if self.use_yolo:
+            return {
+                'detection_method': 'YOLO11',
+                'model_info': self.yolo_handler.get_model_info()
+            }
+        else:
+            return {
+                'detection_method': 'Traditional Image Matching',
+                'model_info': None
+            }

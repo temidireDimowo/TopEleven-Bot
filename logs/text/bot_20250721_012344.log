@@ -1,0 +1,127 @@
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | initialize:48 | Configuration loaded and validated successfully
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | initialize:52 | 🤖 YOLO11 model will be used: models/best.pt
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | _load_model:320 | ✅ YOLO11 model loaded successfully from: models\best.pt
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | _load_model:325 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | __init__:30 | ✅ YOLO11 detection enabled
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | initialize:69 | 🔍 Detection method: YOLO11
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | initialize:72 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | initialize:78 | Bot modules initialized successfully
+2025-07-21 01:23:44 | GameAutomationBot |     INFO | run_interactive_mode:227 | Starting YOLO-enhanced interactive mode...
+2025-07-21 01:23:48 | GameAutomationBot |     INFO | launch_top_eleven:117 | 🚀 Launching Top Eleven on BlueStacks...
+2025-07-21 01:23:48 | GameAutomationBot |     INFO | optimize_for_bluestacks:121 | Applied BlueStacks optimizations
+2025-07-21 01:23:48 | GameAutomationBot |     INFO | _open_windows_search:66 | 🔍 Step 1: Opening Windows search...
+2025-07-21 01:23:50 | GameAutomationBot |     INFO | _open_windows_search:77 | ✅ Windows search opened
+2025-07-21 01:23:50 | GameAutomationBot |     INFO | _launch_bluestacks:86 | 🔍 Step 2: Launching BlueStacks...
+2025-07-21 01:23:50 | GameAutomationBot |    DEBUG | key_boardtype:90 | Typing characters: ('t', 'o', 'p', ' ', 'e', 'l', 'e', 'v', 'e', 'n')
+2025-07-21 01:23:52 | GameAutomationBot |     INFO | key_boardtype:115 | ✅ Successfully typed 10 character(s)/string(s)
+2025-07-21 01:23:54 | GameAutomationBot |    DEBUG | key_boardtype:90 | Typing characters: ('enter',)
+2025-07-21 01:23:54 | GameAutomationBot |     INFO | key_boardtype:115 | ✅ Successfully typed 1 character(s)/string(s)
+2025-07-21 01:23:54 | GameAutomationBot |     INFO | _launch_bluestacks:98 | ✅ BlueStacks launch initiated
+2025-07-21 01:23:54 | GameAutomationBot |     INFO | _wait_for_bluestacks_ready:108 | ⏳ Step 3: Waiting for BlueStacks to be ready...
+2025-07-21 01:23:54 | GameAutomationBot |     INFO | wait_for_bluestacks_ready:184 | ⏳ Waiting for BlueStacks to be ready (timeout: 60s)...
+2025-07-21 01:23:54 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #1
+2025-07-21 01:23:54 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:23:57 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #2
+2025-07-21 01:23:57 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:01 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #3
+2025-07-21 01:24:01 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:05 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #4
+2025-07-21 01:24:05 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:09 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #5
+2025-07-21 01:24:09 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:12 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #6
+2025-07-21 01:24:12 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:16 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #7
+2025-07-21 01:24:16 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:20 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #8
+2025-07-21 01:24:20 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:24 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #9
+2025-07-21 01:24:24 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:28 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #10
+2025-07-21 01:24:28 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:31 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #11
+2025-07-21 01:24:31 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:36 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #12
+2025-07-21 01:24:36 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:39 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #13
+2025-07-21 01:24:39 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:43 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #14
+2025-07-21 01:24:43 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:47 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #15
+2025-07-21 01:24:47 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:50 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #16
+2025-07-21 01:24:50 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:54 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #17
+2025-07-21 01:24:54 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:24:57 | GameAutomationBot |  WARNING | wait_for_bluestacks_ready:214 | ⚠️ BlueStacks not ready after 60 seconds
+2025-07-21 01:24:57 | GameAutomationBot |     INFO | wait_for_bluestacks_ready:215 | 🤷 Proceeding anyway - BlueStacks might be ready but not detected
+2025-07-21 01:24:57 | GameAutomationBot |     INFO | open_top_eleven_app:56 | ✅ Top Eleven launch sequence completed successfully
+2025-07-21 01:24:57 | GameAutomationBot |     INFO | launch_top_eleven:127 | ✅ Top Eleven launch sequence initiated
+2025-07-21 01:24:57 | GameAutomationBot |     INFO | wait_for_bluestacks_ready:184 | ⏳ Waiting for BlueStacks to be ready (timeout: 120s)...
+2025-07-21 01:24:57 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #1
+2025-07-21 01:24:57 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:01 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #2
+2025-07-21 01:25:01 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:05 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #3
+2025-07-21 01:25:05 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:09 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #4
+2025-07-21 01:25:09 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:13 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #5
+2025-07-21 01:25:13 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:17 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #6
+2025-07-21 01:25:17 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:20 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #7
+2025-07-21 01:25:20 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:24 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #8
+2025-07-21 01:25:24 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:27 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #9
+2025-07-21 01:25:27 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:31 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #10
+2025-07-21 01:25:31 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:35 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #11
+2025-07-21 01:25:35 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:39 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #12
+2025-07-21 01:25:39 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:43 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #13
+2025-07-21 01:25:43 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:46 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #14
+2025-07-21 01:25:46 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:50 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #15
+2025-07-21 01:25:50 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:54 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #16
+2025-07-21 01:25:54 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:25:58 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #17
+2025-07-21 01:25:58 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:02 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #18
+2025-07-21 01:26:02 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:06 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #19
+2025-07-21 01:26:06 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:10 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #20
+2025-07-21 01:26:10 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:14 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #21
+2025-07-21 01:26:14 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:17 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #22
+2025-07-21 01:26:17 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:21 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #23
+2025-07-21 01:26:21 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:25 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #24
+2025-07-21 01:26:25 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:28 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #25
+2025-07-21 01:26:28 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:32 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #26
+2025-07-21 01:26:32 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:36 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #27
+2025-07-21 01:26:36 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:40 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #28
+2025-07-21 01:26:40 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:44 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #29
+2025-07-21 01:26:44 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:47 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #30
+2025-07-21 01:26:47 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:51 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #31
+2025-07-21 01:26:51 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:55 | GameAutomationBot |    DEBUG | wait_for_bluestacks_ready:201 | 🔍 BlueStacks ready check #32
+2025-07-21 01:26:55 | GameAutomationBot |    DEBUG | load_image:39 | Loaded and cached image: Assets/BlueStacks/bluestacks_window.png
+2025-07-21 01:26:59 | GameAutomationBot |  WARNING | wait_for_bluestacks_ready:214 | ⚠️ BlueStacks not ready after 120 seconds
+2025-07-21 01:26:59 | GameAutomationBot |     INFO | wait_for_bluestacks_ready:215 | 🤷 Proceeding anyway - BlueStacks might be ready but not detected
+2025-07-21 01:26:59 | GameAutomationBot |     INFO | launch_top_eleven:131 | 🎮 BlueStacks is ready for automation

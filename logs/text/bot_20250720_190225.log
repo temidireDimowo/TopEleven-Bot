@@ -1,0 +1,372 @@
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | initialize:48 | Configuration loaded and validated successfully
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | initialize:52 | 🤖 YOLO11 model will be used: models/best.pt
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | _load_model:320 | ✅ YOLO11 model loaded successfully from: models\best.pt
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | _load_model:325 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | __init__:30 | ✅ YOLO11 detection enabled
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | initialize:69 | 🔍 Detection method: YOLO11
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | initialize:72 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | initialize:78 | Bot modules initialized successfully
+2025-07-20 19:02:25 | GameAutomationBot |     INFO | run_interactive_mode:227 | Starting YOLO-enhanced interactive mode...
+2025-07-20 19:02:59 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:02:59 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:02:59 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:03:03 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.80
+2025-07-20 19:03:03 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:03:03 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.80)
+2025-07-20 19:03:03 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:03:03 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:03:03 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:03:07 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 524) with confidence 0.84
+2025-07-20 19:03:07 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3352, 1284) with confidence 0.59
+2025-07-20 19:03:07 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:03:07 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.84)
+2025-07-20 19:03:07 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:03:07 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 524) using default method
+2025-07-20 19:03:10 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:04:11 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:04:11 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:04:11 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:04:11 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:04:12 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (3417, 510) with confidence 0.47
+2025-07-20 19:04:12 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:04:12 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.47
+2025-07-20 19:04:12 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3417, 510) using default method
+2025-07-20 19:04:12 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:04:13 | GameAutomationBot |     INFO | start_farming:125 | 🔄 Step 6: Sleeping for 65s - checking for second ad...
+2025-07-20 19:05:19 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (3417, 510) with confidence 0.54
+2025-07-20 19:05:19 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:05:19 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.54
+2025-07-20 19:05:19 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3417, 510) using default method
+2025-07-20 19:05:19 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:05:20 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:05:20 | GameAutomationBot |    DEBUG | setup_key_handler:70 | Keyboard listener started
+2025-07-20 19:05:20 | GameAutomationBot |     INFO | continuous_farming:255 | 🔁 Starting YOLO-enhanced continuous farming (interval: 5s)
+2025-07-20 19:05:20 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'skip_ad', 'skip', 'x_button']
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:05:21 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.80
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.80)
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:05:21 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:05:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 523) with confidence 0.85
+2025-07-20 19:05:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3353, 1284) with confidence 0.70
+2025-07-20 19:05:25 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:05:25 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.85)
+2025-07-20 19:05:25 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:05:25 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 523) using default method
+2025-07-20 19:05:28 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:06:29 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:06:30 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (3417, 510) with confidence 0.52
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.52
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3417, 510) using default method
+2025-07-20 19:06:30 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:06:31 | GameAutomationBot |     INFO | start_farming:125 | 🔄 Step 6: Sleeping for 65s - checking for second ad...
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'close_button', 'x_button']
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | run_farming_cycle:242 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': False, 'rewards_collected': False, 'rest_clicked': True, 'cycle_time': 1753049120.7238152, 'sequence_completed': True, 'yolo_enabled': True}
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | continuous_farming:268 | 🌱 Greens collected: 1/25
+2025-07-20 19:07:37 | GameAutomationBot |     INFO | continuous_farming:271 | ⏰ Waiting 5s until next cycle...
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'skip_ad', 'skip', 'x_button']
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:07:42 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.81
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.81)
+2025-07-20 19:07:42 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:07:43 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:07:43 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:07:46 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 524) with confidence 0.84
+2025-07-20 19:07:46 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3352, 1284) with confidence 0.59
+2025-07-20 19:07:46 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:07:46 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.84)
+2025-07-20 19:07:46 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:07:47 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 524) using default method
+2025-07-20 19:07:50 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:08:51 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:08:51 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:08:51 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:08:51 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:08:51 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (247, 237) with confidence 0.31
+2025-07-20 19:08:51 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (3373, 231) with confidence 0.18
+2025-07-20 19:08:51 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (310, 131) with confidence 0.11
+2025-07-20 19:08:51 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 3 objects
+2025-07-20 19:08:51 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.31
+2025-07-20 19:08:52 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (247, 237) using default method
+2025-07-20 19:08:52 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:08:53 | GameAutomationBot |     INFO | start_farming:125 | 🔄 Step 6: Sleeping for 65s - checking for second ad...
+2025-07-20 19:09:58 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (3340, 247) with confidence 0.21
+2025-07-20 19:09:58 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:09:58 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.21
+2025-07-20 19:09:58 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3340, 247) using default method
+2025-07-20 19:09:58 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:09:59 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:09:59 | GameAutomationBot |     INFO | run_farming_cycle:242 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:09:59 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': False, 'rewards_collected': False, 'rest_clicked': True, 'cycle_time': 1753049262.155657, 'sequence_completed': True, 'yolo_enabled': True}
+2025-07-20 19:09:59 | GameAutomationBot |     INFO | continuous_farming:268 | 🌱 Greens collected: 2/25
+2025-07-20 19:09:59 | GameAutomationBot |     INFO | continuous_farming:271 | ⏰ Waiting 5s until next cycle...
+2025-07-20 19:10:04 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:10:05 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (250, 236) with confidence 0.19
+2025-07-20 19:10:05 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (311, 131) with confidence 0.13
+2025-07-20 19:10:05 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:10:05 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.19
+2025-07-20 19:10:05 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (250, 236) using default method
+2025-07-20 19:10:05 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:10:06 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:10:06 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:10:06 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:10:06 | GameAutomationBot |  WARNING | start_farming:76 | ⚠️ 4 with YOLO - taking debug screenshot
+2025-07-20 19:10:07 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\rest_icon_not_found_yolo.png
+2025-07-20 19:10:07 | GameAutomationBot |  WARNING | start_farming:80 | 🛑 Stopping farming sequence - rest icon not available
+2025-07-20 19:10:07 | GameAutomationBot |  WARNING | run_farming_cycle:244 | ⚠️ Farming sequence failed - will retry in next cycle
+2025-07-20 19:10:07 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': True, 'rewards_collected': False, 'rest_clicked': False, 'cycle_time': 1753049404.9307497, 'sequence_completed': False, 'yolo_enabled': True}
+2025-07-20 19:10:07 | GameAutomationBot |     INFO | continuous_farming:278 | 🏁 YOLO-enhanced continuous farming stopped. Total greens: 2
+2025-07-20 19:21:34 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:21:34 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:21:34 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:21:35 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:21:35 | GameAutomationBot |  WARNING | start_farming:76 | ⚠️ 4 with YOLO - taking debug screenshot
+2025-07-20 19:21:35 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\rest_icon_not_found_yolo.png
+2025-07-20 19:21:35 | GameAutomationBot |  WARNING | start_farming:80 | 🛑 Stopping farming sequence - rest icon not available
+2025-07-20 19:21:35 | GameAutomationBot |    DEBUG | setup_key_handler:70 | Keyboard listener started
+2025-07-20 19:21:35 | GameAutomationBot |     INFO | continuous_farming:255 | 🔁 Starting YOLO-enhanced continuous farming (interval: 5s)
+2025-07-20 19:21:35 | GameAutomationBot |     INFO | continuous_farming:278 | 🏁 YOLO-enhanced continuous farming stopped. Total greens: 0
+2025-07-20 19:22:07 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:22:07 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:22:07 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:22:08 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2173, 171) with confidence 0.47
+2025-07-20 19:22:08 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:22:08 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.47)
+2025-07-20 19:22:08 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:22:08 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2173, 171) using default method
+2025-07-20 19:22:08 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:22:12 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 523) with confidence 0.84
+2025-07-20 19:22:12 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3352, 1284) with confidence 0.60
+2025-07-20 19:22:12 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:22:12 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.84)
+2025-07-20 19:22:12 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:22:12 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 523) using default method
+2025-07-20 19:22:15 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:23:16 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:23:16 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:23:16 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:23:16 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'close_button', 'x_button']
+2025-07-20 19:23:17 | GameAutomationBot |  WARNING | start_farming:129 | ⚠️ No ads found to close
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:23:17 | GameAutomationBot |    DEBUG | setup_key_handler:70 | Keyboard listener started
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | continuous_farming:255 | 🔁 Starting YOLO-enhanced continuous farming (interval: 5s)
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'skip_ad', 'skip', 'x_button']
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:23:17 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:23:18 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:23:18 | GameAutomationBot |  WARNING | start_farming:76 | ⚠️ 4 with YOLO - taking debug screenshot
+2025-07-20 19:23:18 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\rest_icon_not_found_yolo.png
+2025-07-20 19:23:18 | GameAutomationBot |  WARNING | start_farming:80 | 🛑 Stopping farming sequence - rest icon not available
+2025-07-20 19:23:18 | GameAutomationBot |  WARNING | run_farming_cycle:244 | ⚠️ Farming sequence failed - will retry in next cycle
+2025-07-20 19:23:18 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': False, 'rewards_collected': False, 'rest_clicked': False, 'cycle_time': 1753050197.3132427, 'sequence_completed': False, 'yolo_enabled': True}
+2025-07-20 19:23:18 | GameAutomationBot |     INFO | continuous_farming:278 | 🏁 YOLO-enhanced continuous farming stopped. Total greens: 0
+2025-07-20 19:24:56 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:24:56 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:24:56 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:24:57 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.80
+2025-07-20 19:24:57 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:24:57 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.80)
+2025-07-20 19:24:57 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:24:57 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:24:57 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:25:01 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 523) with confidence 0.84
+2025-07-20 19:25:01 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3352, 1284) with confidence 0.60
+2025-07-20 19:25:01 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:25:01 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.84)
+2025-07-20 19:25:01 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:25:01 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 523) using default method
+2025-07-20 19:25:04 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:26:05 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:26:05 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:26:05 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:26:05 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'close_button', 'x_button']
+2025-07-20 19:26:06 | GameAutomationBot |  WARNING | start_farming:129 | ⚠️ No ads found to close
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:26:06 | GameAutomationBot |    DEBUG | setup_key_handler:70 | Keyboard listener started
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | continuous_farming:255 | 🔁 Starting YOLO-enhanced continuous farming (interval: 5s)
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'skip_ad', 'skip', 'x_button']
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:26:06 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:26:06 | GameAutomationBot |  WARNING | start_farming:76 | ⚠️ 4 with YOLO - taking debug screenshot
+2025-07-20 19:26:07 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\rest_icon_not_found_yolo.png
+2025-07-20 19:26:07 | GameAutomationBot |  WARNING | start_farming:80 | 🛑 Stopping farming sequence - rest icon not available
+2025-07-20 19:26:07 | GameAutomationBot |  WARNING | run_farming_cycle:244 | ⚠️ Farming sequence failed - will retry in next cycle
+2025-07-20 19:26:07 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': False, 'rewards_collected': False, 'rest_clicked': False, 'cycle_time': 1753050366.2058861, 'sequence_completed': False, 'yolo_enabled': True}
+2025-07-20 19:26:07 | GameAutomationBot |     INFO | continuous_farming:278 | 🏁 YOLO-enhanced continuous farming stopped. Total greens: 0
+2025-07-20 19:26:50 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:26:50 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:26:50 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:26:50 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.80
+2025-07-20 19:26:50 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:26:50 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.80)
+2025-07-20 19:26:50 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:26:51 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:26:51 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:26:54 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 523) with confidence 0.84
+2025-07-20 19:26:54 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3352, 1284) with confidence 0.60
+2025-07-20 19:26:54 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:26:54 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.84)
+2025-07-20 19:26:54 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:26:55 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 523) using default method
+2025-07-20 19:26:58 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:27:59 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:27:59 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:27:59 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:27:59 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:27:59 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (248, 236) with confidence 0.26
+2025-07-20 19:27:59 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found close_ad at (311, 131) with confidence 0.15
+2025-07-20 19:27:59 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:27:59 | GameAutomationBot |     INFO | _handle_ads_with_yolo:162 | ✅ Found close_ad with confidence 0.26
+2025-07-20 19:28:00 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (248, 236) using default method
+2025-07-20 19:28:00 | GameAutomationBot |     INFO | _handle_ads_with_yolo:167 | ✅ Successfully clicked close_ad
+2025-07-20 19:28:01 | GameAutomationBot |     INFO | start_farming:125 | 🔄 Step 6: Sleeping for 65s - checking for second ad...
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'close_button', 'x_button']
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:29:06 | GameAutomationBot |    DEBUG | setup_key_handler:70 | Keyboard listener started
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | continuous_farming:255 | 🔁 Starting YOLO-enhanced continuous farming (interval: 5s)
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'skip_ad', 'skip', 'x_button']
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:29:06 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:29:07 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:29:07 | GameAutomationBot |  WARNING | start_farming:76 | ⚠️ 4 with YOLO - taking debug screenshot
+2025-07-20 19:29:07 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\rest_icon_not_found_yolo.png
+2025-07-20 19:29:07 | GameAutomationBot |  WARNING | start_farming:80 | 🛑 Stopping farming sequence - rest icon not available
+2025-07-20 19:29:07 | GameAutomationBot |  WARNING | run_farming_cycle:244 | ⚠️ Farming sequence failed - will retry in next cycle
+2025-07-20 19:29:07 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': False, 'rewards_collected': False, 'rest_clicked': False, 'cycle_time': 1753050546.6709754, 'sequence_completed': False, 'yolo_enabled': True}
+2025-07-20 19:29:07 | GameAutomationBot |     INFO | continuous_farming:278 | 🏁 YOLO-enhanced continuous farming stopped. Total greens: 0
+2025-07-20 19:32:32 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:32:32 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:32:32 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:32:32 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.80
+2025-07-20 19:32:32 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:32:32 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.80)
+2025-07-20 19:32:32 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:32:33 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:32:33 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:32:36 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3349, 523) with confidence 0.84
+2025-07-20 19:32:36 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3352, 1284) with confidence 0.60
+2025-07-20 19:32:36 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:32:36 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.84)
+2025-07-20 19:32:36 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:32:37 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3349, 523) using default method
+2025-07-20 19:32:40 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:33:44 | GameAutomationBot |     INFO | start_farming:116 | 🔄 Step 4: Attempting to skip ads using YOLO...
+2025-07-20 19:33:44 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:33:44 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['skip_ad', 'skip', 'skip_button']
+2025-07-20 19:33:44 | GameAutomationBot |     INFO | start_farming:121 | 🔄 Step 5: No skip ads found, trying close ads...
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'close_button', 'x_button']
+2025-07-20 19:33:45 | GameAutomationBot |  WARNING | start_farming:129 | ⚠️ No ads found to close
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | start_farming:135 | ✅ YOLO-enhanced farming sequence completed successfully
+2025-07-20 19:33:45 | GameAutomationBot |    DEBUG | setup_key_handler:70 | Keyboard listener started
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | continuous_farming:255 | 🔁 Starting YOLO-enhanced continuous farming (interval: 5s)
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | run_farming_cycle:228 | 🔄 Running YOLO-enhanced farming cycle...
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | _handle_ads_with_yolo:156 | ❌ No objects found for classes: ['close_ad', 'close', 'skip_ad', 'skip', 'x_button']
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:33:45 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:33:46 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 19:33:46 | GameAutomationBot |  WARNING | start_farming:76 | ⚠️ 4 with YOLO - taking debug screenshot
+2025-07-20 19:33:46 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\rest_icon_not_found_yolo.png
+2025-07-20 19:33:46 | GameAutomationBot |  WARNING | start_farming:80 | 🛑 Stopping farming sequence - rest icon not available
+2025-07-20 19:33:46 | GameAutomationBot |  WARNING | run_farming_cycle:244 | ⚠️ Farming sequence failed - will retry in next cycle
+2025-07-20 19:33:46 | GameAutomationBot |     INFO | continuous_farming:265 | 📊 Farming cycle results: {'ads_handled': False, 'rewards_collected': False, 'rest_clicked': False, 'cycle_time': 1753050825.2852435, 'sequence_completed': False, 'yolo_enabled': True}
+2025-07-20 19:33:46 | GameAutomationBot |     INFO | continuous_farming:278 | 🏁 YOLO-enhanced continuous farming stopped. Total greens: 0
+2025-07-20 19:50:07 | GameAutomationBot |     INFO | start_resource_farming:147 | 🌾 Starting YOLO-enhanced resource farming automation...
+2025-07-20 19:50:07 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:50:07 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:50:07 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 171) with confidence 0.55
+2025-07-20 19:50:07 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:50:07 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.55)
+2025-07-20 19:50:07 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:50:08 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 171) using default method
+2025-07-20 19:50:08 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:50:11 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3354, 885) with confidence 0.70
+2025-07-20 19:50:11 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3357, 1649) with confidence 0.62
+2025-07-20 19:50:11 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:50:11 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.70)
+2025-07-20 19:50:11 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:50:11 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3354, 885) using default method
+2025-07-20 19:50:14 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | stop_farming:207 | 🛑 Stopping resource farming...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | stop_farming:207 | 🛑 Stopping resource farming...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | toggle_farming:215 | 🔴 Resource farming paused
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | stop_farming:207 | 🛑 Stopping resource farming...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:64 | 🌾 Starting YOLO-enhanced resource farming sequence...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | toggle_farming:215 | 🔴 Resource farming paused
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | toggle_farming:215 | 🔴 Resource farming paused
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:71 | 🔍 Step 1: Looking for rest icon using YOLO...
+2025-07-20 19:50:20 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.78
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.78)
+2025-07-20 19:50:20 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:50:21 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.78
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.78)
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:50:21 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (2174, 172) with confidence 0.78
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 1 objects
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: rest_pack (confidence: 0.78)
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | start_farming:84 | ✅ Step 1: Found and clicking rest icon
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (2174, 172) using default method
+2025-07-20 19:50:21 | GameAutomationBot |     INFO | start_farming:91 | ⏳ Step 2: Waiting for watch ads button to appear...
+2025-07-20 19:50:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3359, 1817) with confidence 0.85
+2025-07-20 19:50:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3354, 1068) with confidence 0.76
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.85)
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:50:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3359, 1817) with confidence 0.85
+2025-07-20 19:50:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3354, 1068) with confidence 0.76
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.85)
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:50:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3359, 1817) with confidence 0.85
+2025-07-20 19:50:25 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found watch_ads_general at (3354, 1068) with confidence 0.76
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | find_best_match:426 | ✅ Best match: watch_ads_general (confidence: 0.85)
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | start_farming:100 | ✅ Step 2: Found watch ads button using class: watch_ads_general
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3359, 1817) using default method
+2025-07-20 19:50:25 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3359, 1817) using default method
+2025-07-20 19:50:26 | GameAutomationBot |     INFO | click_at_point:46 | ✅ Clicked at (3359, 1817) using default method
+2025-07-20 19:50:28 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:50:28 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:50:29 | GameAutomationBot |     INFO | start_farming:112 | 😴 Step 3: Sleeping for 61 seconds...
+2025-07-20 19:50:42 | GameAutomationBot |     INFO | signal_handler:284 | 📡 Received signal 2 - shutting down gracefully...
+2025-07-20 19:50:42 | GameAutomationBot |     INFO | stop_farming:207 | 🛑 Stopping resource farming...
+2025-07-20 19:50:42 | GameAutomationBot |     INFO | cleanup:276 | ✅ Cleanup completed

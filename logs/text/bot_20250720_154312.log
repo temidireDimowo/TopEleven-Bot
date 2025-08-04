@@ -1,0 +1,20 @@
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | initialize:48 | Configuration loaded and validated successfully
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | initialize:52 | 🤖 YOLO11 model will be used: models/best.pt
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | _load_model:320 | ✅ YOLO11 model loaded successfully from: models\best.pt
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | _load_model:325 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | __init__:30 | ✅ YOLO11 detection enabled
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | initialize:69 | 🔍 Detection method: YOLO11
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | initialize:72 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | initialize:78 | Bot modules initialized successfully
+2025-07-20 15:43:12 | GameAutomationBot |     INFO | run_interactive_mode:227 | Starting YOLO-enhanced interactive mode...
+2025-07-20 15:43:16 | GameAutomationBot |     INFO | test_yolo_detection:184 | 🧪 Testing YOLO detection...
+2025-07-20 15:43:18 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 0 objects
+2025-07-20 15:43:18 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\yolo_test.png
+2025-07-20 15:44:06 | GameAutomationBot |     INFO | test_yolo_detection:184 | 🧪 Testing YOLO detection...
+2025-07-20 15:44:07 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found morale_pack at (1276, 77) with confidence 0.80
+2025-07-20 15:44:07 | GameAutomationBot |    DEBUG | find_objects_on_screen:394 | 🎯 Found rest_pack at (1091, 78) with confidence 0.79
+2025-07-20 15:44:07 | GameAutomationBot |     INFO | find_objects_on_screen:399 | 🔍 YOLO detection found 2 objects
+2025-07-20 15:44:07 | GameAutomationBot |     INFO | save_annotated_screenshot:556 | 📸 Annotated screenshot saved: logs\yolo_test.png
+2025-07-20 15:58:36 | GameAutomationBot |     INFO | signal_handler:284 | 📡 Received signal 2 - shutting down gracefully...
+2025-07-20 15:58:36 | GameAutomationBot |     INFO | stop_farming:219 | 🛑 Stopping resource farming...
+2025-07-20 15:58:36 | GameAutomationBot |     INFO | cleanup:276 | ✅ Cleanup completed

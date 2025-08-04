@@ -1,0 +1,22 @@
+2025-07-19 11:25:27 | GameAutomationBot |    ERROR | _launch_top_eleven:205 | ❌ Top Eleven app not found on screen, point None top_eleven_image <class 'PIL.PngImagePlugin.PngImageFile'>
+2025-07-19 11:25:27 | GameAutomationBot |    ERROR | launch_top_eleven:112 | ❌ Failed to launch Top Eleven
+2025-07-19 12:12:05 | GameAutomationBot |    ERROR | _launch_top_eleven:205 | ❌ Top Eleven app not found on screen, point None top_eleven_image <class 'PIL.PngImagePlugin.PngImageFile'>
+2025-07-19 12:12:05 | GameAutomationBot |    ERROR | launch_top_eleven:138 | ❌ Failed to launch Top Eleven
+2025-07-19 12:36:01 | GameAutomationBot |    ERROR | _launch_top_eleven:205 | ❌ Top Eleven app not found on screen, point None top_eleven_image <class 'PIL.PngImagePlugin.PngImageFile'>
+2025-07-19 12:36:01 | GameAutomationBot |    ERROR | launch_top_eleven:138 | ❌ Failed to launch Top Eleven
+2025-07-20 16:43:06 | GameAutomationBot |    ERROR | start_farming:113 | ❌ Watch ads button not found with YOLO
+2025-07-20 17:46:36 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: YOLOImageHandler.find_class_on_screen() got an unexpected keyword argument 'nce_threshold'
+2025-07-20 18:55:47 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: YOLOImageHandler.find_class_on_screen() got an unexpected keyword argument 'cofidence_threshold'. Did you mean 'confidence_threshold'?
+2025-07-20 20:52:25 | GameAutomationBot |    ERROR | start_farming:106 | ❌ Watch ads button not found with YOLO
+2025-07-22 02:21:31 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-23 02:36:37 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-23 09:24:59 | GameAutomationBot |    ERROR | farm_rest_player:170 | ❌ Watch ads button not found with YOLO
+2025-07-24 03:50:24 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-24 08:55:47 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-24 15:32:20 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-28 13:10:06 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-28 14:11:10 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-07-30 11:29:17 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-08-02 02:21:18 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-08-02 03:26:27 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
+2025-08-04 01:40:11 | GameAutomationBot |    ERROR | start_farming:105 | ❌ Watch ads button not found with YOLO

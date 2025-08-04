@@ -8,7 +8,7 @@ import logging
 import time
 from typing import Optional, Tuple
 from pathlib import Path
-
+import os
 import pyautogui
 import pydirectinput
 from Modules.Bot.config import BotConfig, ClickType
@@ -42,7 +42,7 @@ class BlueStacksBot:
         """
         try:
             # Step 1: Open Windows Start Menu
-            if not self._open_windows_start_menu():
+            if not self._open_windows_search():
                 return False
                 
             # Step 2: Launch BlueStacks
@@ -53,62 +53,33 @@ class BlueStacksBot:
             if not self._wait_for_bluestacks_ready():
                 return False
                 
-            # Step 4: Navigate to BlueStacks Home
-            if not self._navigate_to_bluestacks_home():
-                return False
-                
-            # Step 5: Launch Top Eleven
-            if not self._launch_top_eleven():
-                return False
-                
             self.logger.info("✅ Top Eleven launch sequence completed successfully")
             return True
             
         except Exception as e:
             self.logger.error(f"Error in open_top_eleven_app: {e}")
-            self.take_screenshot(name="launch_error")
+            launch_error_count = len([x for x in os.listdir("logs") if (x.startswith("launch_error"))])
+            self.take_screenshot("launch_error"+f"{launch_error_count}")
             return False
-
-    def _open_windows_start_menu(self) -> bool:
-        """Open Windows start menu."""
+    def _open_windows_search(self) -> bool:
+        """Open Windows search using keyboard library."""
         try:
-            self.logger.info("🔍 Step 1: Opening Windows start menu...")
+            self.logger.info("🔍 Step 1: Opening Windows search...")
             
-            # Try to click on the windows icon in dark mode first
-            dark_icon_path = self.assets_paths['start_icon_dark']
-            light_icon_path = self.assets_paths['start_icon_light']
+            # Import keyboard library for direct key presses
+            import keyboard
             
-            clicked_start = False
+            # Press Windows key to open search
+            keyboard.press_and_release('win')
             
-            if dark_icon_path:
-                point = self.image_handler.find_image_on_screen(
-                    self.image_handler.load_image(self.assets_paths['start_icon_dark'])
-                )
-                if point:
-                    self.input_handler.click_at_point(point)
-                    clicked_start = True
-                    self.logger.info("✅ Clicked Windows start icon (dark mode)")
+            # Wait for search to open
+            time.sleep(2)
             
-            if not clicked_start and light_icon_path:
-                point = self.image_handler.find_image_on_screen(
-                    self.image_handler.load_image(self.assets_paths['start_icon_light'])
-                )
-                if point:
-                    self.input_handler.click_at_point(point)
-                    clicked_start = True
-                    self.logger.info("✅ Clicked Windows start icon (light mode)")
-            
-            if not clicked_start:
-                self.logger.error("❌ Could not find Windows start icon")
-                return False
-            
-            # Wait for start menu to open
-            time.sleep(1)
+            self.logger.info("✅ Windows search opened")
             return True
             
         except Exception as e:
-            self.logger.error(f"Error opening Windows start menu: {e}")
-            return False
+            self.logger.error
 
     def _launch_bluestacks(self) -> bool:
         """Launch BlueStacks application."""
@@ -116,7 +87,7 @@ class BlueStacksBot:
             self.logger.info("🔍 Step 2: Launching BlueStacks...")
             
             # Type BlueStacks in the search bar
-            search_text = "BlueStacks"
+            search_text = "top eleven"
             self.input_handler.key_boardtype(tuple(search_text), type_interval=0.05)
             
             # Wait for search results
@@ -142,72 +113,6 @@ class BlueStacksBot:
             self.logger.error(f"Error waiting for BlueStacks: {e}")
             return False
 
-    def _navigate_to_bluestacks_home(self) -> bool:
-        """Navigate to BlueStacks home."""
-        try:
-            self.logger.info("🔍 Step 4: Navigating to BlueStacks home...")
-            
-            # Find BlueStacks home button
-            blue_stacks_home = self.assets_paths['bluestacks_home']
-            
-            # Check if the home button image file exists
-            home_button_path = Path(blue_stacks_home)
-            if not home_button_path.exists():
-                self.logger.error(f"❌ BlueStacks home button image not found: {home_button_path}")
-                return False
-            
-            point = self.image_handler.find_image_on_screen(
-                self.image_handler.load_image(blue_stacks_home)
-            )
-            
-            if point:
-                self.input_handler.click_at_point(point)
-                self.logger.info("✅ Clicked BlueStacks home button")
-                time.sleep(2)  # Wait for home screen to load
-                return True
-            else:
-                self.logger.warning("⚠️ BlueStacks home button not found on screen")
-                # Continue anyway, might already be on home screen
-                return True
-                
-        except Exception as e:
-            self.logger.error(f"Error navigating to BlueStacks home: {e}")
-            return False
-
-    def _launch_top_eleven(self) -> bool:
-        """Launch Top Eleven app."""
-        try:
-            self.logger.info("🔍 Step 5: Launching Top Eleven app...")
-            
-            # Wait a bit for home screen to be ready
-            self.logger.info("⏳ Waiting for home screen to be ready...")
-            time.sleep(5)
-            
-            # Find top eleven app
-            top_eleven_path = self.assets_paths['top_eleven']
-            
-            # Check if the Top Eleven app image file exists
-            app_image_path = Path(top_eleven_path)
-            if not app_image_path.exists():
-                self.logger.error(f"❌ Top Eleven app image not found: {app_image_path}")
-                return False
-            
-            
-            top_eleven_image =  self.image_handler.load_image(top_eleven_path)
-            point = self.image_handler.find_image_on_screen(top_eleven_image)
-            
-            if point:
-                self.input_handler.click_at_point(point)
-                self.logger.info("✅ Clicked Top Eleven app")
-                time.sleep(3)  # Wait for app to start loading
-                return True
-            else:
-                self.logger.error(f"❌ Top Eleven app not found on screen, point {point} top_eleven_image {type(top_eleven_image)}")
-                return False
-                
-        except Exception as e:
-            self.logger.error(f"Error launching Top Eleven app: {e}")
-            return False
 
     def optimize_for_bluestacks(self) -> None:
         """Apply BlueStacks-specific optimizations."""

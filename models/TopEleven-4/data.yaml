@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 12
+names: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+
+roboflow:
+  workspace: main-yzbou
+  project: topeleven
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/main-yzbou/topeleven/dataset/4
