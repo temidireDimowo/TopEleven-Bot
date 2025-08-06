@@ -28,6 +28,7 @@ class BotConfig:
     top_eleven_dir: str = "TopEleven"
     close_dir: str = "Assets/TopEleven/Ads/close"
     skip_dir: str = "Assets/TopEleven/Ads/skip"
+    screenshot_dir: str = "Assets/TopEleven/Ads/skip"
     
     @classmethod
     def from_json(cls, config_path: str = "config.json") -> "BotConfig":
@@ -60,7 +61,8 @@ class BotConfig:
                 target_image=config_data.get('target_image', 'ProductLogo.png'),
                 top_eleven_dir=config_data.get('top_eleven_dir', 'Assets/TopEleven'),
                 close_dir=config_data.get('close_dir', 'Assets/TopEleven/Ads/close'),
-                skip_dir=config_data.get('skip_dir', 'Assets/TopEleven/Ads/skip')
+                skip_dir=config_data.get('skip_dir', 'Assets/TopEleven/Ads/skip'),
+                screenshot_dir=config_data.get('screenshot_dir', 'Assets/TopEleven/Ads/skip')
             )
             
         except json.JSONDecodeError as e:
@@ -146,13 +148,17 @@ class BotConfig:
             
         if not self.skip_dir.strip():
             issues.append("skip_dir cannot be empty")
-        
+
+        if not self.screenshot_dir.strip():
+            issues.append("screenshot_dir cannot be empty")
+
         # Check if directories exist
         for dir_attr, dir_name in [
             ('images_dir', 'images_dir'),
             ('top_eleven_dir', 'top_eleven_dir'),
             ('close_dir', 'close_dir'),
-            ('skip_dir', 'skip_dir')
+            ('skip_dir', 'skip_dir'),
+            ('screenshot_dir', 'screenshot_dir')
         ]:
             dir_path = Path(getattr(self, dir_attr))
             if not dir_path.exists():
@@ -176,5 +182,6 @@ class BotConfig:
             f"target_image='{self.target_image}', "
             f"top_eleven_dir='{self.top_eleven_dir}', "
             f"close_dir='{self.close_dir}', "
+            f"screenshot_dir='{self.screenshot_dir}', "
             f"skip_dir='{self.skip_dir}')"
         )

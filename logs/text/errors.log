@@ -20,3 +20,7 @@
 2025-08-02 02:21:18 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
 2025-08-02 03:26:27 | GameAutomationBot |    ERROR | start_farming:103 | ❌ Watch ads button not found with YOLO
 2025-08-04 01:40:11 | GameAutomationBot |    ERROR | start_farming:105 | ❌ Watch ads button not found with YOLO
+2025-08-04 18:49:10 | GameAutomationBot |    ERROR | continuous_farming:325 | ❌ Error in farming cycle: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-04 18:49:10 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-04 19:33:23 | GameAutomationBot |    ERROR | initialize:83 | Failed to initialize bot: 'tuple' object is not callable
+2025-08-04 20:37:29 | GameAutomationBot |    ERROR | start_farming:105 | ❌ Watch ads button not found with YOLO
