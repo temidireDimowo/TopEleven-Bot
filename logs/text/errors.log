@@ -32,3 +32,11 @@
 2025-08-06 10:39:04 | GameAutomationBot |    ERROR | launch_top_eleven:138 | ❌ Failed to launch Top Eleven
 2025-08-06 10:39:08 | GameAutomationBot |    ERROR | launch_top_eleven:138 | ❌ Failed to launch Top Eleven
 2025-08-06 10:39:10 | GameAutomationBot |    ERROR | launch_top_eleven:138 | ❌ Failed to launch Top Eleven
+2025-08-06 11:05:47 | GameAutomationBot |    ERROR | launch_top_eleven:138 | ❌ Failed to launch Top Eleven
+2025-08-06 13:24:04 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 13:25:18 | GameAutomationBot |    ERROR | continuous_farming:325 | ❌ Error in farming cycle: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 13:25:18 | GameAutomationBot |    ERROR | start_rest_farming_player:185 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 18:29:19 | GameAutomationBot |    ERROR | take_debug_screenshot:196 | Failed to take debug screenshot: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 18:29:34 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 18:29:44 | GameAutomationBot |    ERROR | farm_rest_player:173 | ❌ Watch ads button not found with YOLO
+2025-08-06 18:29:44 | GameAutomationBot |    ERROR | start_rest_farming_player:185 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
