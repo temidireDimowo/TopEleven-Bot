@@ -40,3 +40,5 @@
 2025-08-06 18:29:34 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
 2025-08-06 18:29:44 | GameAutomationBot |    ERROR | farm_rest_player:173 | ❌ Watch ads button not found with YOLO
 2025-08-06 18:29:44 | GameAutomationBot |    ERROR | start_rest_farming_player:185 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 18:57:46 | GameAutomationBot |    ERROR | continuous_farming:325 | ❌ Error in farming cycle: 'BotConfig' object has no attribute 'screenshot_dir'
+2025-08-06 18:57:47 | GameAutomationBot |    ERROR | start_resource_farming:164 | Error in resource farming: 'BotConfig' object has no attribute 'screenshot_dir'
