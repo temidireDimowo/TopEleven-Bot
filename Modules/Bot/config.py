@@ -28,7 +28,7 @@ class BotConfig:
     top_eleven_dir: str = "TopEleven"
     close_dir: str = "Assets/TopEleven/Ads/close"
     skip_dir: str = "Assets/TopEleven/Ads/skip"
-    screenshot_dir: str = "Assets/TopEleven/Ads/skip"
+    screenshot_dir: str = "logs/screenshots"
     
     @classmethod
     def from_json(cls, config_path: str = "config.json") -> "BotConfig":
@@ -62,7 +62,7 @@ class BotConfig:
                 top_eleven_dir=config_data.get('top_eleven_dir', 'Assets/TopEleven'),
                 close_dir=config_data.get('close_dir', 'Assets/TopEleven/Ads/close'),
                 skip_dir=config_data.get('skip_dir', 'Assets/TopEleven/Ads/skip'),
-                screenshot_dir=config_data.get('screenshot_dir', 'Assets/TopEleven/Ads/skip')
+                screenshot_dir=config_data.get('screenshot_dir', '"logs/screenshots"')
             )
             
         except json.JSONDecodeError as e:
