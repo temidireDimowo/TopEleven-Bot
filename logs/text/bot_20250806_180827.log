@@ -1,0 +1,9 @@
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | initialize:48 | Configuration loaded and validated successfully
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | initialize:52 | 🤖 YOLO11 model will be used: models/best.pt
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | _load_model:320 | ✅ YOLO11 model loaded successfully from: models\best.pt
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | _load_model:325 | 📋 Model classes: ['cash_pack', 'close_ad', 'daily_rewards_Question', 'daily_rewards_options', 'daily_rewards_watch_ads', 'medic_pack', 'morale_pack', 'no_ads_green', 'rest_pack', 'skip_ad', 'watch_ads_general', 'windows_button']
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | __init__:31 | ✅ YOLO11 detection enabled
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | initialize:69 | 🔍 Detection method: Traditional Image Matching
+2025-08-06 18:08:27 | GameAutomationBot |     INFO | initialize:78 | Bot modules initialized successfully
+2025-08-06 18:21:12 | GameAutomationBot |     INFO | stop_farming:257 | 🛑 Stopping resource farming...
+2025-08-06 18:21:12 | GameAutomationBot |     INFO | cleanup:299 | ✅ Cleanup completed
