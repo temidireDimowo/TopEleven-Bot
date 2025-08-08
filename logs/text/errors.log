@@ -49,3 +49,4 @@
 2025-08-04 19:33:23 | GameAutomationBot |    ERROR | initialize:83 | Failed to initialize bot: 'tuple' object is not callable
 2025-08-04 20:37:29 | GameAutomationBot |    ERROR | start_farming:105 | ❌ Watch ads button not found with YOLO
 >>>>>>> main
+2025-08-07 23:32:37 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
