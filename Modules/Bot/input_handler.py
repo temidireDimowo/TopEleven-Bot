@@ -43,7 +43,7 @@ class InputHandler:
                 # pyautogui.click()
                 pyautogui.doubleClick()
                 
-            self.logger.info(f"✅ Clicked at ({point.x}, {point.y}) using {click_type.value} method")
+            self.logger.info(f" Clicked at ({point.x}, {point.y}) using {click_type.value} method")
             return True
             
         except Exception as e:
@@ -112,7 +112,7 @@ class InputHandler:
                 if type_interval > 0:
                     time.sleep(type_interval)
                     
-            self.logger.info(f"✅ Successfully typed {len(characters)} character(s)/string(s)")
+            self.logger.info(f" Successfully typed {len(characters)} character(s)/string(s)")
             return True
             
         except Exception as e:

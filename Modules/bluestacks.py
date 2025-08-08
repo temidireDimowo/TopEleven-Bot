@@ -36,9 +36,9 @@ class BlueStacksBot:
         
     def open_top_eleven_app(self) -> Optional[Tuple[int, int, int, int]]:
         """
-            To open the app the following sequence must occur
-            1. Search and open bluestacks from windows start menu
-            2. Find and open TopEleven app in Bluestacks
+        To open the app the following sequence must occur:
+        1. Search and open bluestacks from windows start menu
+        2. Find and open TopEleven app in Bluestacks
         """
         try:
             # Step 1: Open Windows Start Menu
@@ -53,7 +53,7 @@ class BlueStacksBot:
             if not self._wait_for_bluestacks_ready():
                 return False
                 
-            self.logger.info("✅ Top Eleven launch sequence completed successfully")
+            self.logger.info("Top Eleven launch sequence completed successfully")
             return True
             
         except Exception as e:
@@ -61,10 +61,11 @@ class BlueStacksBot:
             launch_error_count = len([x for x in os.listdir("logs") if (x.startswith("launch_error"))])
             self.take_screenshot("launch_error"+f"{launch_error_count}")
             return False
+    
     def _open_windows_search(self) -> bool:
         """Open Windows search using keyboard library."""
         try:
-            self.logger.info("🔍 Step 1: Opening Windows search...")
+            self.logger.info("Step 1: Opening Windows search...")
             
             # Import keyboard library for direct key presses
             import keyboard
@@ -75,7 +76,7 @@ class BlueStacksBot:
             # Wait for search to open
             time.sleep(2)
             
-            self.logger.info("✅ Windows search opened")
+            self.logger.info("Windows search opened")
             return True
             
         except Exception as e:
@@ -84,7 +85,7 @@ class BlueStacksBot:
     def _launch_bluestacks(self) -> bool:
         """Launch BlueStacks application."""
         try:
-            self.logger.info("🔍 Step 2: Launching BlueStacks...")
+            self.logger.info("Step 2: Launching BlueStacks...")
             
             # Type BlueStacks in the search bar
             search_text = "top eleven"
@@ -96,7 +97,7 @@ class BlueStacksBot:
             # Press Enter to launch BlueStacks
             self.input_handler.key_boardtype(('enter',))
             
-            self.logger.info("✅ BlueStacks launch initiated")
+            self.logger.info("BlueStacks launch initiated")
             return True
             
         except Exception as e:
@@ -106,13 +107,12 @@ class BlueStacksBot:
     def _wait_for_bluestacks_ready(self) -> bool:
         """Wait for BlueStacks to be ready."""
         try:
-            self.logger.info("⏳ Step 3: Waiting for BlueStacks to be ready...")
+            self.logger.info("Step 3: Waiting for BlueStacks to be ready...")
             return self.wait_for_bluestacks_ready(60)  # Reduced timeout to 60 seconds
             
         except Exception as e:
             self.logger.error(f"Error waiting for BlueStacks: {e}")
             return False
-
 
     def optimize_for_bluestacks(self) -> None:
         """Apply BlueStacks-specific optimizations."""
@@ -146,7 +146,7 @@ class BlueStacksBot:
             # Add delay from config
             time.sleep(self.config.delay)
                 
-            self.logger.info(f"✅ BlueStacks click at ({x}, {y})")
+            self.logger.info(f"BlueStacks click at ({x}, {y})")
             return True
             
         except Exception as e:
@@ -182,7 +182,7 @@ class BlueStacksBot:
         Returns:
             True if BlueStacks is ready, False if timeout
         """
-        self.logger.info(f"⏳ Waiting for BlueStacks to be ready (timeout: {timeout}s)...")
+        self.logger.info(f"Waiting for BlueStacks to be ready (timeout: {timeout}s)...")
         
         start_time = time.time()
         bluestacks_window_pattern = self.assets_paths.get('bluestacks_window')
@@ -191,15 +191,15 @@ class BlueStacksBot:
         if bluestacks_window_pattern:
             window_image_path = Path(bluestacks_window_pattern)
             if not window_image_path.exists():
-                self.logger.warning(f"⚠️ BlueStacks window image not found: {window_image_path}")
-                self.logger.info("⏳ Using time-based wait instead...")
+                self.logger.warning(f"BlueStacks window image not found: {window_image_path}")
+                self.logger.info("Using time-based wait instead...")
                 time.sleep(60)  # Wait 60 seconds and assume it's ready
                 return True
         
         check_count = 0
         while time.time() - start_time < timeout:
             check_count += 1
-            self.logger.debug(f"🔍 BlueStacks ready check #{check_count}")
+            self.logger.debug(f"BlueStacks ready check #{check_count}")
             
             if bluestacks_window_pattern:
                 # Look for BlueStacks window indicator
@@ -207,13 +207,13 @@ class BlueStacksBot:
                 if window_image:
                     point = self.image_handler.find_image_on_screen(window_image)
                     if point:
-                        self.logger.info("✅ BlueStacks is ready!")
+                        self.logger.info("BlueStacks is ready!")
                         return True
             
             time.sleep(3)  # Check every 3 seconds
         
-        self.logger.warning(f"⚠️ BlueStacks not ready after {timeout} seconds")
-        self.logger.info("🤷 Proceeding anyway - BlueStacks might be ready but not detected")
+        self.logger.warning(f"BlueStacks not ready after {timeout} seconds")
+        self.logger.info("Proceeding anyway - BlueStacks might be ready but not detected")
         return True  # Changed to return True to continue the process
             
     def restart_bluestacks_app(self, app_package: str) -> bool:
@@ -251,7 +251,7 @@ class BlueStacksBot:
             screenshot = pyautogui.screenshot()
             screenshot.save(save_path)
             
-            self.logger.info(f"📸 Screenshot saved: {save_path}")
+            self.logger.info(f"Screenshot saved: {save_path}")
             return True
             
         except Exception as e:
