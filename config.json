@@ -1,11 +1,16 @@
-{   "delay":0.1,
-    "confidence":0.65,
-    "move_duration":0.2,
-    "images_dir":"Assets",  
-    "log_dir":"logs/text",
-    "screenshot_dir":"logs/screenshots",
-    "target_image":"ProductLogo.png",
-    "top_eleven_dir":"Assets/TopEleven",  
-    "close_dir":"Assets/TopEleven/Ads/close",  
-    "skip_dir":"Assets/TopEleven/Ads/skip"
+{
+    "delay": 0.1,
+    "confidence": 0.65,
+    "move_duration": 0.2,
+    "images_dir": "Assets",  
+    "log_dir": "logs/text",
+    "screenshot_dir": "logs/screenshots",
+    "target_image": "ProductLogo.png",
+    "top_eleven_dir": "Assets/TopEleven",  
+    "close_dir": "Assets/TopEleven/Ads/close",  
+    "skip_dir": "Assets/TopEleven/Ads/skip",
+    "yolo_model_path": "models/best.pt",
+    "yolo_confidence": 0.5,
+    "fallback_to_traditional": true,
+    "yolo_enabled": true
 }
