@@ -123,7 +123,7 @@ class SimpleBotController:
     def start_resource_farming(self) -> None:
         self.logger.info("Starting resource farming...")
         try:
-            self.resource_farmer.start_farming()
+            # self.resource_farmer.start_farming()
             from Modules.Bot.input_handler import InputHandler
             input_handler = InputHandler(self.config, self.logger)
             input_handler.setup_key_handler(self.toggle_farming, self.stop_resource_farming)

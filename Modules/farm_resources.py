@@ -22,7 +22,7 @@ class ResourceFarmer:
         self.config = config
         self.logger = logger
         self.input_handler = InputHandler(config, logger)
-        self.farming_active = False
+        self.farming_active = True
         
         # Initialize YOLO handler if model path is provided
         if model_path and Path(model_path).exists():
@@ -71,7 +71,7 @@ class ResourceFarmer:
         
         if rest_point is None:
             self.logger.warning("Rest icon not found with YOLO - taking debug screenshot")
-            rest_icon_not_found_count = len([x for x in os.listdir("logs") if (x.startswith("rest_icon_not_found"))])
+            rest_icon_not_found_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("rest_icon_not_found"))])
             self.take_screenshot("rest_icon_not_found"+f"_{rest_icon_not_found_count}")
             self.logger.warning("Stopping farming sequence - rest icon not available")
             self.farming_active = False
@@ -99,7 +99,7 @@ class ResourceFarmer:
         
         if not watch_ads_found:
             self.logger.error("Watch ads button not found with YOLO")
-            watch_ads_not_found_count = len([x for x in os.listdir("logs") if (x.startswith("watch_ads_not_found"))])
+            watch_ads_not_found_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("watch_ads_not_found"))])
             self.take_screenshot("watch_ads_not_found"+f"_{watch_ads_not_found_count}")
             self.farming_active = False
             return False
@@ -166,7 +166,7 @@ class ResourceFarmer:
         
         if not watch_ads_found:
             self.logger.error("Watch ads button not found with YOLO")
-            watch_ads_not_found_count = len([x for x in os.listdir("logs") if (x.startswith("watch_ads_not_found"))])
+            watch_ads_not_found_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("watch_ads_not_found"))])
             self.take_screenshot("watch_ads_not_found"+f"_{watch_ads_not_found_count}")
             self.farming_active = False
             return False
@@ -302,10 +302,14 @@ class ResourceFarmer:
         green_count = 0
         max_greens = 25
         
+        # Setting farming active to true so that we can farm greens
+        # if there is a failure farming state will be set to False 
+        self.farming_active = True
+        print(self.farming_active)
+
         while self.farming_active and green_count < max_greens:
             try:
                 results = self.run_farming_cycle()
-                
                 if results:
                     self.logger.info(f"Farming cycle results: {results}")
                     if results.get('sequence_completed', False):
@@ -318,7 +322,7 @@ class ResourceFarmer:
                     
             except Exception as e:
                 self.logger.error(f"Error in farming cycle: {e}")
-                farming_error_count = len([x for x in os.listdir("logs") if (x.startswith("farming_error"))])
+                farming_error_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("farming_error"))])
                 self.take_screenshot("farming_error"+f"_{farming_error_count+1}")
                 
         self.logger.info(f"YOLO-enhanced continuous farming stopped. Total greens: {green_count}")

@@ -58,7 +58,7 @@ class BlueStacksBot:
             
         except Exception as e:
             self.logger.error(f"Error in open_top_eleven_app: {e}")
-            launch_error_count = len([x for x in os.listdir("logs") if (x.startswith("launch_error"))])
+            launch_error_count = len([x for x in os.listdir(self.config.log_dir) if (x.startswith("launch_error"))])
             self.take_screenshot("launch_error"+f"{launch_error_count}")
             return False
     
@@ -97,6 +97,12 @@ class BlueStacksBot:
             # Press Enter to launch BlueStacks
             self.input_handler.key_boardtype(('enter',))
             
+            time.sleep(5)
+            import keyboard 
+            keyboard.press_and_release('win+up')
+            self.logger.info("Entered bluestacks fullscreen")
+
+
             self.logger.info("BlueStacks launch initiated")
             return True
             
