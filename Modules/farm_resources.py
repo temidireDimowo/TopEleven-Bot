@@ -55,7 +55,7 @@ class ResourceFarmer:
     def start_farming(self) -> bool:
         """
         Start the resource farming process with YOLO11 detection:
-        1. Look for rest_icon using YOLO
+        1. Look for token_icon using YOLO
         2. Wait for watch_ads button to appear and click it
         3. Sleep for 61 seconds
         4. Try to skip ads using YOLO detection
@@ -64,22 +64,22 @@ class ResourceFarmer:
         self.farming_active = True
         self.logger.info("Starting YOLO-enhanced resource farming sequence...")
 
-        # Step 1: Look for rest icon using YOLO
-        self.logger.info("Step 1: Looking for rest icon using YOLO...")
+        # Step 1: Look for token icon using YOLO
+        self.logger.info("Step 1: Looking for token icon using YOLO...")
         
-        rest_point = self.yolo_handler.find_class_on_screen('rest_pack', confidence_threshold=0.1)
+        token_point = self.yolo_handler.find_class_on_screen('token_pack', confidence_threshold=0.1)
         
-        if rest_point is None:
-            self.logger.warning("Rest icon not found with YOLO - taking debug screenshot")
-            rest_icon_not_found_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("rest_icon_not_found"))])
-            self.take_screenshot("rest_icon_not_found"+f"_{rest_icon_not_found_count}")
-            self.logger.warning("Stopping farming sequence - rest icon not available")
+        if token_point is None:
+            self.logger.warning("token icon not found with YOLO - taking debug screenshot")
+            token_icon_not_found_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("token_icon_not_found"))])
+            self.take_screenshot("token_icon_not_found"+f"_{token_icon_not_found_count}")
+            self.logger.warning("Stopping farming sequence - token icon not available")
             self.farming_active = False
             return False
             
-        self.logger.info("Step 1: Found and clicking rest icon")
-        if not self.input_handler.click_at_point(rest_point):
-            self.logger.error("Failed to click rest icon")
+        self.logger.info("Step 1: Found and clicking token icon")
+        if not self.input_handler.click_at_point(token_point):
+            self.logger.error("Failed to click token icon")
             self.farming_active = False
             return False
         
@@ -106,7 +106,7 @@ class ResourceFarmer:
             
         # Step 3: Sleep for 61 seconds
         self.logger.info("Step 3: Sleeping for 61 seconds...")
-        time.sleep(61)
+        time.sleep(65)
         
         # Step 4: Try to skip ads using YOLO
         self.logger.info("Step 4: Attempting to skip ads using YOLO...")
@@ -128,18 +128,30 @@ class ResourceFarmer:
                 else:
                     self.logger.info("Step 6: Sleeping for 65s - checking for second ad...")
                     time.sleep(65)
-                    self._handle_ads_with_yolo(['close_ad'])
+                    self._handle_ads_with_yolo(['close_ad'],['skip_ad'])
             else:
                 self.logger.warning("No ads found to close")
         else:
             self.logger.info("Step 5: Skip ads found, checking for close ads after 65 seconds...")
             time.sleep(65)
             self._handle_ads_with_yolo(['close_ad'])
+            if close_found:
+                # Check if there is a watch_ads_general image, else wait for the second ad close button
+                ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
+                if ads_point:
+                    self.logger.info(f"Step 6: Found watch ads button using class: watch_ads_general")
+                    if self.input_handler.click_at_point(ads_point):
+                        watch_ads_found = True
+                    time.sleep(3)
+                else:
+                    self.logger.info("Step 7: Sleeping for 65s - checking for second ad...")
+                    time.sleep(65)
+                    self._handle_ads_with_yolo(['close_ad'],['skip_ad'])
         
         self.logger.info("YOLO-enhanced farming sequence completed successfully")
         return True
     
-    def farm_rest_player(self) -> bool:
+    def farm_token_player(self) -> bool:
         """
         Start the resource farming process with YOLO11 detection:
         1. Look for general_watch_ads button to appear and click it
@@ -148,7 +160,7 @@ class ResourceFarmer:
         4. If no skip found, try close ads
         """
         self.farming_active = True
-        self.logger.info("Starting farm rest player...")
+        self.logger.info("Starting farm token player...")
 
         # Step 2: Wait for watch ads button using YOLO
         self.logger.info("Step 1: Waiting for watch ads button to appear...")
@@ -264,7 +276,7 @@ class ResourceFarmer:
         results = {
             'ads_handled': False,
             'rewards_collected': False,
-            'rest_clicked': False,
+            'token_clicked': False,
             'cycle_time': time.time(),
             'sequence_completed': False,
             'yolo_enabled': self.use_yolo
@@ -279,11 +291,11 @@ class ResourceFarmer:
             ])
         
         # Try to run the main farming sequence
-        rest_success = self.start_farming()
-        results['rest_clicked'] = rest_success
-        results['sequence_completed'] = rest_success
+        token_success = self.start_farming()
+        results['token_clicked'] = token_success
+        results['sequence_completed'] = token_success
         
-        if rest_success:
+        if token_success:
             self.logger.info("YOLO-enhanced farming sequence completed successfully")
         else:
             self.logger.warning("Farming sequence failed - will retry in next cycle")

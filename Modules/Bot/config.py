@@ -20,7 +20,7 @@ class ClickType(Enum):
 class BotConfig:
     """Configuration class for bot settings."""
     delay: float = 0.1
-    confidence: float = 0.8
+    confidence: float = 0.5
     move_duration: float = 0.2
     images_dir: str = "Assets"
     log_dir: str = "logs"
