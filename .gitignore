@@ -2,4 +2,4 @@
 # [5501] Mini-Project Info.pdf
 *Mini-Project*
 logs/
-*__pycache__*
+**/__pycache__/**
