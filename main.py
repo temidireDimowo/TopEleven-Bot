@@ -58,12 +58,14 @@ class SimpleBotController:
             self.yolo_model_path = env_path
             return env_path
 
-        for path in ["models/best.pt", "yolo/best.pt", "weights/best.pt", "Assets/models/best.pt"]:
+        for path in ["models/best.pt"]:
             if Path(path).exists():
                 self.yolo_model_path = path
+                self.logger.info("Yolo best.pt file validation found")
                 return path
 
         self.yolo_model_path = None
+        self.logger.error("Yolo best.pt file validation failed")
         return None
 
     def initialize(self) -> bool:
@@ -127,7 +129,9 @@ class SimpleBotController:
             from Modules.Bot.input_handler import InputHandler
             input_handler = InputHandler(self.config, self.logger)
             input_handler.setup_key_handler(self.toggle_farming, self.stop_resource_farming)
-            self.resource_farmer.continuous_farming(cycle_interval=5)
+            for x in range(0,5):
+                self.resource_farmer.continuous_farming(cycle_interval=5)
+                self.logger.info(f"Farming cycle {x} of 5 ended")
         except Exception as e:
             self.logger.error(f"Farming error: {e}")
 
