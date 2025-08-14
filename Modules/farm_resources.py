@@ -131,7 +131,7 @@ class ResourceFarmer:
                 else:
                     self.logger.info("Step 6: Sleeping for 65s - checking for second ad...")
                     time.sleep(65)
-                    self._handle_ads_with_yolo(['close_ad'],['skip_ad'])
+                    self._handle_ads_with_yolo(['close_ad','skip_ad'])
             else:
                 self.logger.warning("No ads found to close")
                 self.logger.info("Trying hail mary attempt to close the ad")
@@ -143,7 +143,7 @@ class ResourceFarmer:
             time.sleep(65)
             self._handle_ads_with_yolo(['close_ad'])
             if close_found:
-                # Check if there is a watch_ads_general image, else wait for the second ad close button
+                # Check if there is a watch_ads_general image, else wait for the second ad close button]
                 ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
                 if ads_point:
                     self.logger.info(f"Step 6: Found watch ads button using class: watch_ads_general")
