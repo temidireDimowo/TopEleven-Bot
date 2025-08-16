@@ -160,7 +160,7 @@ class SimpleBotController:
             return
         self.logger.info("Testing YOLO detection...")
         try:
-            detected = self.resource_farmer.yolo_handler.find_objects_on_screen()
+            detected = self.resource_farmer.yolo_handler.find_objects_on_screen(confidence_threshold=self.config.confidence-0.2)
             if detected:
                 for i, obj in enumerate(detected, 1):
                     self.logger.info(f"{i}. {obj['class_name']} ({obj['confidence']:.2f})")

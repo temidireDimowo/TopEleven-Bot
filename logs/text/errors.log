@@ -61,3 +61,90 @@
 2025-08-09 07:05:30 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
 2025-08-09 11:00:53 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
 2025-08-09 11:35:57 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-10 01:02:38 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-10 13:06:53 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-10 13:37:48 | GameAutomationBot |    ERROR | click_at_point:50 | Failed to click at (3635, 192): PyAutoGUI fail-safe triggered from mouse moving to a corner of the screen. To disable this fail-safe, set pyautogui.FAILSAFE to False. DISABLING FAIL-SAFE IS NOT RECOMMENDED.
+2025-08-11 06:15:53 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 06:38:12 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 06:38:19 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 06:38:25 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 12:37:18 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 12:37:25 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 12:37:31 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 12:37:38 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-11 12:37:45 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-13 03:05:37 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 03:08:00 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 03:39:28 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-13 03:40:53 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-13 06:05:52 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:09:40 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:11:07 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-13 06:11:14 | GameAutomationBot |    ERROR | start_farming:101 | Watch ads button not found with YOLO
+2025-08-13 06:17:46 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:20:08 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:22:31 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:24:53 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:29:29 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 06:31:51 | GameAutomationBot |    ERROR | continuous_farming:336 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 07:02:30 | GameAutomationBot |    ERROR | continuous_farming:342 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 07:04:52 | GameAutomationBot |    ERROR | continuous_farming:342 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 07:07:15 | GameAutomationBot |    ERROR | continuous_farming:342 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-13 07:07:21 | GameAutomationBot |    ERROR | start_farming:103 | Watch ads button not found with YOLO
+2025-08-13 07:30:32 | GameAutomationBot |    ERROR | continuous_farming:342 | Error in farming cycle: BlueStacksBot.bluestacks_escape() missing 1 required positional argument: 'self'
+2025-08-13 07:31:48 | GameAutomationBot |    ERROR | continuous_farming:342 | Error in farming cycle: BlueStacksBot.bluestacks_escape() missing 1 required positional argument: 'self'
+2025-08-13 07:33:04 | GameAutomationBot |    ERROR | continuous_farming:342 | Error in farming cycle: BlueStacksBot.bluestacks_escape() missing 1 required positional argument: 'self'
+2025-08-13 07:44:52 | GameAutomationBot |    ERROR | continuous_farming:343 | Error in farming cycle: BlueStacksBot.bluestacks_escape() missing 1 required positional argument: 'self'
+2025-08-13 08:20:22 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-13 08:20:28 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-13 08:20:35 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-13 08:20:42 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-13 08:20:48 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-14 00:34:16 | GameAutomationBot |    ERROR | continuous_farming:343 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 00:36:39 | GameAutomationBot |    ERROR | continuous_farming:343 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 00:41:38 | GameAutomationBot |    ERROR | on_key_press:64 | Error in key handler: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 00:41:38 | GameAutomationBot |    ERROR | on_key_press:64 | Error in key handler: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 00:41:38 | GameAutomationBot |    ERROR | on_key_press:64 | Error in key handler: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 00:41:38 | GameAutomationBot |    ERROR | on_key_press:64 | Error in key handler: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 00:52:14 | GameAutomationBot |    ERROR | continuous_farming:343 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 01:31:57 | GameAutomationBot |    ERROR | continuous_farming:343 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 01:34:19 | GameAutomationBot |    ERROR | continuous_farming:343 | Error in farming cycle: ResourceFarmer._handle_ads_with_yolo() takes 2 positional arguments but 3 were given
+2025-08-14 01:54:26 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-14 01:54:33 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-14 01:54:40 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-14 01:54:46 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-14 01:54:53 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 03:50:53 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 03:51:00 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 04:01:39 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 04:14:08 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 04:14:15 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 04:26:48 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 04:33:13 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 04:38:41 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 05:20:57 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 05:21:03 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 05:31:40 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 05:36:36 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 05:36:43 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 05:36:50 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 07:34:33 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 15:51:01 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 15:53:37 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 15:53:44 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 15:53:51 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 15:58:55 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 16:11:43 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 16:11:49 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 16:11:56 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 16:12:02 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 16:12:09 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-15 19:28:52 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 02:50:17 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 02:50:24 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 02:50:30 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 02:50:37 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 02:50:43 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 03:44:48 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 03:44:56 | GameAutomationBot |    ERROR | start_farming:104 | Watch ads button not found with YOLO
+2025-08-16 03:46:16 | GameAutomationBot |    ERROR | click_at_point:50 | Failed to click at (3494, 178): PyAutoGUI fail-safe triggered from mouse moving to a corner of the screen. To disable this fail-safe, set pyautogui.FAILSAFE to False. DISABLING FAIL-SAFE IS NOT RECOMMENDED.
