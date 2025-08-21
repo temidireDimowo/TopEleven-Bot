@@ -150,7 +150,7 @@ class SimpleBotController:
     def take_debug_screenshot(self) -> None:
         self.logger.info("Taking debug screenshot...")
         try:
-            count_debug_files = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startsWith("debug_manual"))])
+            count_debug_files = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("debug_manual"))])
             path = self.resource_farmer.take_screenshot(f"debug_manual_{count_debug_files}")
             self.logger.info(f"Screenshot saved: {path}")
         except Exception as e:
