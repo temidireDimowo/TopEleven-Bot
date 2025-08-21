@@ -14,6 +14,7 @@ from tkinter.scrolledtext import ScrolledText
 import datetime
 from pathlib import Path
 from typing import Optional
+import os
 
 sys.path.append(str(Path(__file__).parent))
 
@@ -149,7 +150,8 @@ class SimpleBotController:
     def take_debug_screenshot(self) -> None:
         self.logger.info("Taking debug screenshot...")
         try:
-            path = self.resource_farmer.take_screenshot("debug_manual")
+            count_debug_files = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startsWith("debug_manual"))])
+            path = self.resource_farmer.take_screenshot(f"debug_manual_{count_debug_files}")
             self.logger.info(f"Screenshot saved: {path}")
         except Exception as e:
             self.logger.error(f"Screenshot error: {e}")
