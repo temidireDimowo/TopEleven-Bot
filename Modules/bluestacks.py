@@ -158,6 +158,24 @@ class BlueStacksBot:
         except Exception as e:
             self.logger.error(f"BlueStacks click failed at ({x}, {y}): {e}")
             return False
+    def bluestacks_escape(self) -> bool:
+        """
+        Perform BlueStacks-escape button       
+            
+        Returns:
+            True if successful, False otherwise
+        """
+
+        try:
+            import keyboard
+            # Move to position using config move_duration
+            keyboard.press_and_release("esc")
+            self.logger.info(f"BlueStacks escape button pressed")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"BlueStacks escape button failed")
+            return False
             
     def send_key_combination(self, *keys) -> bool:
         """
