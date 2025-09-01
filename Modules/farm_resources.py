@@ -26,7 +26,7 @@ class ResourceFarmer:
         self.input_handler = InputHandler(config, logger)
         self.farming_active = True
         self.bluestacks_bot = BlueStacksBot(self.config, self.logger)
-        
+        self.green_count =  0
         # Initialize YOLO handler if model path is provided
         if model_path and Path(model_path).exists():
             self.yolo_handler = YOLOImageHandler(config, logger, model_path)
@@ -60,7 +60,7 @@ class ResourceFarmer:
         Start the resource farming process with YOLO11 detection:
         1. Look for rest_icon using YOLO
         2. Wait for watch_ads button to appear and click it
-        3. Sleep for 61 seconds
+        3. Sleep for 75 seconds
         4. Try to skip ads using YOLO detection
         5. If no skip found, try close ads
         """
@@ -107,9 +107,9 @@ class ResourceFarmer:
             self.farming_active = False
             return False
             
-        # Step 3: Sleep for 61 seconds
-        self.logger.info("Step 3: Sleeping for 61 seconds...")
-        time.sleep(65)
+        # Step 3: Sleep for 75 seconds
+        self.logger.info("Step 3: Sleeping for 75 seconds...")
+        time.sleep(75)
         
         # Step 4: Try to skip ads using YOLO
         self.logger.info("Step 4: Attempting to skip ads using YOLO...")
@@ -130,7 +130,7 @@ class ResourceFarmer:
                     time.sleep(3)
                 else:
                     self.logger.info("Step 6: Sleeping for 65s - checking for second ad...")
-                    time.sleep(65)
+                    time.sleep(75)
                     self._handle_ads_with_yolo(['close_ad','skip_ad'])
             else:
                 self.logger.warning("No ads found to close")
@@ -140,7 +140,7 @@ class ResourceFarmer:
                 
         else:
             self.logger.info("Step 5: Skip ads found, checking for close ads after 65 seconds...")
-            time.sleep(65)
+            time.sleep(75)
             self._handle_ads_with_yolo(['close_ad'])
             if close_found:
                 # Check if there is a watch_ads_general image, else wait for the second ad close button]
@@ -152,7 +152,7 @@ class ResourceFarmer:
                     time.sleep(3)
                 else:
                     self.logger.info("Step 7: Sleeping for 65s - checking for second ad...")
-                    time.sleep(65)
+                    time.sleep(75)
                     self._handle_ads_with_yolo(['close_ad','skip_ad'])
         
         self.logger.info("YOLO-enhanced farming sequence completed successfully")
@@ -162,7 +162,7 @@ class ResourceFarmer:
         """
         Start the resource farming process with YOLO11 detection:
         1. Look for general_watch_ads button to appear and click it
-        2. Sleep for 61 seconds
+        2. Sleep for 75 seconds
         3. Try to skip ads using YOLO detection
         4. If no skip found, try close ads
         """
@@ -190,9 +190,9 @@ class ResourceFarmer:
             self.farming_active = False
             return False
             
-        # Step 3: Sleep for 61 seconds
-        self.logger.info("Step 3: Sleeping for 61 seconds...")
-        time.sleep(61)
+        # Step 3: Sleep for 75 seconds
+        self.logger.info("Step 3: Sleeping for 75 seconds...")
+        time.sleep(75)
         
         # Step 4: Try to skip ads using YOLO
         self.logger.info("Step 4: Attempting to skip ads using YOLO...")
@@ -213,13 +213,13 @@ class ResourceFarmer:
                     time.sleep(3)
                 else:
                     self.logger.info("Step 6: Sleeping for 65s - checking for second ad...")
-                    time.sleep(65)
+                    time.sleep(75)
                     self._handle_ads_with_yolo(['close_ad'])
             else:
                 self.logger.warning("No ads found to close")
         else:
             self.logger.info("Step 5: Skip ads found, checking for close ads after 65 seconds...")
-            time.sleep(65)
+            time.sleep(75)
             self._handle_ads_with_yolo(['close_ad'])
         
         self.logger.info("YOLO-enhanced farming sequence completed successfully")
@@ -326,13 +326,16 @@ class ResourceFarmer:
         self.farming_active = True
         print(self.farming_active)
 
-        while self.farming_active and green_count < max_greens:
+        while self.farming_active and self.green_count < max_greens:
             try:
                 results = self.run_farming_cycle()
                 if results:
                     self.logger.info(f"Farming cycle results: {results}")
                     if results.get('sequence_completed', False):
                         green_count += 1
+                        
+
+                        
                         self.logger.info(f"Greens collected: {green_count}/{max_greens}")
                 
                 if self.farming_active:  # Check again before sleeping
@@ -343,8 +346,12 @@ class ResourceFarmer:
                 self.logger.error(f"Error in farming cycle: {e}")
                 farming_error_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("farming_error"))])
                 self.take_screenshot("farming_error"+f"_{farming_error_count+1}")
-                
-        self.logger.info(f"YOLO-enhanced continuous farming stopped. Total greens: {green_count}")
+        
+        # Update class variable with  green count 
+        self.green_count += green_count 
+        
+        self.logger.info(f"YOLO-enhanced continuous farming stopped. Greens from completed cycle: {green_count}")
+        self.logger.info(f"Total greens: {self.green_count}/{max_greens}")
 
     def get_detection_info(self) -> Dict:
         """Get information about the current detection method."""
