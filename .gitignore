@@ -1,6 +1,9 @@
 .env
 # [5501] Mini-Project Info.pdf
 *Mini-Project*
-*logs/screenshot/*
+*logs/screenshots/*
 *logs/text/*
+!logs/text/.gitkeep
+!logs/screenshots/.gitkeep
+
 **/__pycache__/**
