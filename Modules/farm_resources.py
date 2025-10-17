@@ -100,6 +100,7 @@ class ResourceFarmer:
                 watch_ads_found = True
             time.sleep(3)
         
+        # Log error screenshot to be annotated or debugged
         if not watch_ads_found:
             self.logger.error("Watch ads button not found with YOLO")
             watch_ads_not_found_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("watch_ads_not_found"))])
@@ -108,53 +109,80 @@ class ResourceFarmer:
             return False
             
         # Step 3: Sleep for 75 seconds
-        self.logger.info("Step 3: Sleeping for 75 seconds...")
+        self.logger.info("Step 3: Sleeping for 75 seconds, waiting for ad to end...")
         time.sleep(75)
         
         # Step 4: Try to skip ads using YOLO
-        self.logger.info("Step 4: Attempting to skip ads using YOLO...")
-        skip_found = self._handle_ads_with_yolo(['skip_ad'])
+        self.logger.info("Step 4: Attempting to skip or close ads button after waiting 75 seconds using YOLO...")
+        skip_close_btn_found = self._handle_ads_with_yolo(['skip_ad','close_ad'])
         
-        # Step 5: If no skip found, try close ads
-        if not skip_found:
-            self.logger.info("Step 5: No skip ads found, trying close ads...")
+        # Step 5: If no skip found, try close ads button
+        if not skip_close_btn_found:
+            self.logger.info("Step 5: No skip or close ads button found, trying close ads button immediately because we waited 75 seconds")
+            self.logger.error("No skip or close ads button found with YOLO")
+            skip_or_close_ads_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("skip_or_close_ads"))])
+            self.take_screenshot("skip_or_close_ads"+f"_{skip_or_close_ads_count}")
+
+
+            ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
+            if ads_point:
+                self.logger.info(f"Step 6: Found watch ads button using class: watch_ads_general\n Step7: Stop closing or skipping ads")
+                watch_ads_found = True
+                return(watch_ads_found)
+                time.sleep(3)
+
             close_found = self._handle_ads_with_yolo(['close_ad'])
-            
             if close_found:
                 # Check if there is a watch_ads_general image, else wait for the second ad close button
                 ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
                 if ads_point:
-                    self.logger.info(f"Step 2: Found watch ads button using class: watch_ads_general")
-                    if self.input_handler.click_at_point(ads_point):
-                        watch_ads_found = True
+                    self.logger.info(f"Step 6: Found watch ads button using class: watch_ads_general\n Step7: Stop closing or skipping ads")
+                    watch_ads_found = True
+                    return(watch_ads_found)
                     time.sleep(3)
                 else:
-                    self.logger.info("Step 6: Sleeping for 65s - checking for second ad...")
+                    self.logger.info("Step 7: Sleeping for 75s - checking for second ad...")
                     time.sleep(75)
                     self._handle_ads_with_yolo(['close_ad','skip_ad'])
+                    skip_or_close_ads_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("skip_or_close_ads"))])
+                    self.take_screenshot("skip_or_close_ads"+f"_{skip_or_close_ads_count}")
+
             else:
                 self.logger.warning("No ads found to close")
-                self.logger.info("Trying hail mary attempt to close the ad")
+                self.logger.info("Trying hail mary attempt to close the ad with escape button")
                 self.bluestacks_bot.bluestacks_escape()
                 return True
                 
         else:
-            self.logger.info("Step 5: Skip ads found, checking for close ads after 65 seconds...")
+            self.logger.info("Step 5: Sleeping for 75 seconds, waiting for second ad to end...")
             time.sleep(75)
-            self._handle_ads_with_yolo(['close_ad'])
-            if close_found:
-                # Check if there is a watch_ads_general image, else wait for the second ad close button]
+            
+            # Step 4: Try to skip ads using YOLO
+            self.logger.info("Step 6: Attempting to skip or close ads button after waiting 75 seconds using YOLO...")
+            skip_close_btn_found = self._handle_ads_with_yolo(['skip_ad','close_ad'])
+            if skip_close_btn_found:
                 ads_point = self.yolo_handler.find_class_on_screen("watch_ads_general", confidence_threshold=0.45)
                 if ads_point:
-                    self.logger.info(f"Step 6: Found watch ads button using class: watch_ads_general")
-                    if self.input_handler.click_at_point(ads_point):
-                        watch_ads_found = True
+                    self.logger.info(f"Step 7: Found watch ads button using class: watch_ads_general\n Step7: Stop closing or skipping ads")
+                    watch_ads_found = True
+                    return(watch_ads_found)
                     time.sleep(3)
                 else:
-                    self.logger.info("Step 7: Sleeping for 65s - checking for second ad...")
-                    time.sleep(75)
-                    self._handle_ads_with_yolo(['close_ad','skip_ad'])
-        
+                    self.logger.warning("No skip or close ads found to close")
+                    self.logger.info("Trying hail mary attempt to close the ad with escape button")
+                    self.bluestacks_bot.bluestacks_escape()
+                    hail_mary_count = len([x for x in os.listdir(self.config.screenshot_dir) if (x.startswith("skip_or_close_ads"))])
+                    self.take_screenshot("hail_mary_result"+f"_{hail_mary_count}")
+
+                    return True
+
+            else: 
+                self.logger.warning("No skip or close ads found to close")
+                self.logger.info("Trying hail mary attempt to close the ad with escape button")
+                self.bluestacks_bot.bluestacks_escape()
+                return True
+
+                
         self.logger.info("YOLO-enhanced farming sequence completed successfully")
         return True
     
@@ -309,7 +337,7 @@ class ResourceFarmer:
             
         return results
         
-    def continuous_farming(self, cycle_interval: int = 10) -> None:
+    def continuous_farming(self, cycle_interval: int = 10, farming_count=0) -> None:
         """
         Run continuous farming with YOLO11 detection.
         
@@ -321,6 +349,17 @@ class ResourceFarmer:
         green_count = 0
         max_greens = 25
         
+        # Creating conditional statements to handle top eleven pop up after a failed cycle
+        if farming_count > 0: 
+            try:
+                self._handle_ads_with_yolo(['top_elven_pop_up'])
+            except:
+                self.logger.error(f"Error closing top eleven advert {e}")
+            try:
+                self._handle_ads_with_yolo(['skip_ad'])
+            except:
+                self.logger.error(f"Error closing top eleven advert {e}")
+
         # Setting farming active to true so that we can farm greens
         # if there is a failure farming state will be set to False 
         self.farming_active = True
@@ -333,10 +372,7 @@ class ResourceFarmer:
                     self.logger.info(f"Farming cycle results: {results}")
                     if results.get('sequence_completed', False):
                         green_count += 1
-                        
-
-                        
-                        self.logger.info(f"Greens collected: {green_count}/{max_greens}")
+                        self.logger.info(f"Greens collected: {green_count}/1")
                 
                 if self.farming_active:  # Check again before sleeping
                     self.logger.info(f"Waiting {cycle_interval}s until next cycle...")
