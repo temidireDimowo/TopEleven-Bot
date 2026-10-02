@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Release tag (e.g. v1.0.0)"
+        required: true
+        default: "v1.0.0"
 
 jobs:
   build-windows:
@@ -78,8 +84,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: "TopEleven Bot ${{ github.ref_name }}"
+          tag_name: ${{ github.event.inputs.tag_name || github.ref_name }}
+          name: "TopEleven Bot ${{ github.event.inputs.tag_name || github.ref_name }}"
           body: |
             ## TopEleven Bot ${{ github.ref_name }}
 
