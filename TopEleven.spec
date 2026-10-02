@@ -57,34 +57,68 @@ a = Analysis(
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
-exe = EXE(
-    pyz,
-    a.scripts,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    [],
-    name='TopElevenBot',
-    debug=False,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=False,
-    disable_windowed_traceback=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-    icon='Assets/icon.ico' if sys.platform == 'win32' else 'Assets/icon.icns',
-)
+_ico = Path('Assets/icon.ico')
+_icns = Path('Assets/icon.icns')
 
-# macOS: also build an .app bundle
-if sys.platform == 'darwin':
-    app = BUNDLE(
+if sys.platform == 'win32':
+    # Windows: single onefile EXE
+    exe = EXE(
+        pyz,
+        a.scripts,
+        a.binaries,
+        a.zipfiles,
+        a.datas,
+        [],
+        name='TopElevenBot',
+        debug=False,
+        bootloader_ignore_signals=False,
+        strip=False,
+        upx=True,
+        upx_exclude=[],
+        runtime_tmpdir=None,
+        console=False,
+        disable_windowed_traceback=False,
+        target_arch=None,
+        codesign_identity=None,
+        entitlements_file=None,
+        icon=str(_ico) if _ico.exists() else None,
+    )
+
+else:
+    # macOS: onedir EXE + BUNDLE (.app)
+    exe = EXE(
+        pyz,
+        a.scripts,
+        [],
+        exclude_binaries=True,
+        name='TopElevenBot',
+        debug=False,
+        bootloader_ignore_signals=False,
+        strip=False,
+        upx=True,
+        console=False,
+        disable_windowed_traceback=False,
+        target_arch=None,
+        codesign_identity=None,
+        entitlements_file=None,
+        icon=str(_icns) if _icns.exists() else None,
+    )
+
+    coll = COLLECT(
         exe,
+        a.binaries,
+        a.zipfiles,
+        a.datas,
+        strip=False,
+        upx=True,
+        upx_exclude=[],
+        name='TopElevenBot',
+    )
+
+    app = BUNDLE(
+        coll,
         name='TopElevenBot.app',
-        icon='Assets/icon.icns',
+        icon=str(_icns) if _icns.exists() else None,
         bundle_identifier='com.topeleven.bot',
         info_plist={
             'NSHighResolutionCapable': True,
