@@ -80,7 +80,8 @@ class BlueStacksBot:
             return True
             
         except Exception as e:
-            self.logger.error
+            self.logger.error(f"Error opening Windows search: {e}")
+            return False
 
     def _launch_bluestacks(self) -> bool:
         """Launch BlueStacks application."""
@@ -236,9 +237,8 @@ class BlueStacksBot:
             
             time.sleep(3)  # Check every 3 seconds
         
-        self.logger.warning(f"BlueStacks not ready after {timeout} seconds")
-        self.logger.info("Proceeding anyway - BlueStacks might be ready but not detected")
-        return True  # Changed to return True to continue the process
+        self.logger.warning(f"BlueStacks not detected after {timeout} seconds")
+        return False
             
     def restart_bluestacks_app(self, app_package: str) -> bool:
         """
