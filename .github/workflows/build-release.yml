@@ -1,0 +1,100 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements-build.txt
+
+      - name: Build EXE
+        run: pyinstaller TopEleven.spec --clean --noconfirm
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TopElevenBot-Windows
+          path: dist/TopElevenBot.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements-build.txt
+
+      - name: Build .app
+        run: pyinstaller TopEleven.spec --clean --noconfirm
+
+      - name: Create DMG
+        run: |
+          hdiutil create -volname "TopEleven Bot" \
+            -srcfolder dist/TopElevenBot.app \
+            -ov -format UDZO \
+            dist/TopElevenBot.dmg
+
+      - name: Upload Mac artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TopElevenBot-Mac
+          path: dist/TopElevenBot.dmg
+
+  release:
+    needs: [build-windows, build-mac]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: TopElevenBot-Windows
+          path: artifacts/
+
+      - name: Download Mac artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: TopElevenBot-Mac
+          path: artifacts/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "TopEleven Bot ${{ github.ref_name }}"
+          body: |
+            ## TopEleven Bot ${{ github.ref_name }}
+
+            Cross-platform bot for farming greens in Top Eleven via BlueStacks.
+
+            ### Downloads
+            - **Windows**: `TopElevenBot.exe` (no install required)
+            - **Mac**: `TopElevenBot.dmg` (drag to Applications)
+
+            ### What's included
+            - Modern dark UI with live farming log
+            - Farm Greens, Farm Rest, Claim Daily modes
+            - Invisible overlay HUD (Ctrl+Shift+O)
+            - Debug panel with detection log and screenshot gallery
+            - Template matching (works without YOLO model)
+          files: |
+            artifacts/TopElevenBot.exe
+            artifacts/TopElevenBot.dmg
